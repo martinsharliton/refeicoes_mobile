@@ -1,55 +1,53 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import '../models/categoria.dart';
 
-const List<Categoria> DADOS_FICTICIOS = [
-  Categoria(
+final List<Categoria> DADOS_FICTICIOS = [
+  const Categoria(
     id: 'c1',
     titulo: 'Italiano',
     cor: Colors.purple,
   ),
-  Categoria(
+  const Categoria(
     id: 'c2',
     titulo: 'Rápido & Fácil',
     cor: Colors.red,
   ),
-  Categoria(
+  const Categoria(
     id: 'c3',
     titulo: 'Hamburgers',
     cor: Colors.orange,
   ),
-  Categoria(
+  const Categoria(
     id: 'c4',
     titulo: 'Alemã',
     cor: Colors.amber,
   ),
-  Categoria(
+  const Categoria(
     id: 'c5',
     titulo: 'Leve & Saudável',
     cor: Colors.amber,
   ),
-  Categoria(
+  const Categoria(
     id: 'c6',
     titulo: 'Exótica',
     cor: Colors.green,
   ),
-  Categoria(
+  const Categoria(
     id: 'c7',
     titulo: 'Café da Manhã',
     cor: Colors.lightBlue,
   ),
-  Categoria(
+  const Categoria(
     id: 'c8',
     titulo: 'Asiática',
     cor: Colors.lightGreen,
   ),
-  Categoria(
+  const Categoria(
     id: 'c9',
     titulo: 'Francesa',
     cor: Colors.pink,
   ),
-  Categoria(
+  const Categoria(
     id: 'c10',
     titulo: 'Verão',
     cor: Colors.teal,
