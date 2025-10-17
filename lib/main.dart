@@ -1,8 +1,6 @@
-import 'package:app03_refeicoes/utils/rotas_app.dart';
 import 'package:flutter/material.dart';
 
-import './screens/tela_categoria.dart';
-import './screens/tela_refeicoes_categoria.dart';
+import 'pages/categoria/categoria_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,23 +9,28 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal, surfaceTint: Colors.transparent),
         fontFamily: 'Raleway-Bold',
         canvasColor: const Color.fromRGBO(255, 254, 229, 1),
+        appBarTheme: AppBarTheme(
+          iconTheme: IconThemeData(color: Colors.white),
+          backgroundColor: Colors.teal,
+          centerTitle: true,
+          titleTextStyle: TextStyle(
+            fontFamily: 'RobotoCondensed-Bold',
+            fontSize: 25,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
-      //home: const TelaCategoria(),
-
-      // -- Rotas do aplicativo --
-      routes: {
-        RotasApp.HOME: ((context) => const TelaCategoria()),
-        RotasApp.CATEGORIA_REFEICOES: ((context) => const TelaCategoriaRefeicoes()),
-      },
+      // routes: RotasApp.routes,
+      home: const CategoriaPage(),
     );
   }
 }

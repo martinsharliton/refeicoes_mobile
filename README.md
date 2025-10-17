@@ -1,4 +1,4 @@
-# app03_refeicoes
+# refeicoes
 
 A new Flutter project.
 
