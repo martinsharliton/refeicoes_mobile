@@ -4,7 +4,7 @@ class SettingsTheme {
   SettingsTheme._();
 
   static final theme = ThemeData(
-    colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal, surfaceTint: Colors.transparent),
+    colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 240, 219, 200), surfaceTint: Colors.transparent),
     fontFamily: 'Raleway-Bold',
     canvasColor: const Color.fromRGBO(255, 254, 229, 1),
     scaffoldBackgroundColor: Colors.grey[200],

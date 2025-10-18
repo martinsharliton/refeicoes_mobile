@@ -17,7 +17,7 @@ class ItemCategoria extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: Colors.black87,
+          color: Color.fromARGB(255, 207, 171, 137),
           image: DecorationImage(image: NetworkImage(categoria.imagemUrl), fit: BoxFit.cover, opacity: 0.8),
         ),
         child: Container(

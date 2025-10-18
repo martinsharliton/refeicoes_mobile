@@ -13,7 +13,7 @@ class CategoriaPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Center(child: Text('Minhas Receitas')),
-        backgroundColor: Colors.black87,
+        backgroundColor: Color.fromARGB(255, 207, 171, 137),
       ),
       drawer: Drawer(
         child: Column(
