@@ -7,17 +7,16 @@ final List<Categoria> dataSet = [
   Categoria(
     id: 'c1',
     titulo: 'Italiana',
-    cor: Colors.red,
+    cor: Colors.red.shade700,
     descricao: 'Massas, pizzas e molhos clássicos da culinária italiana.',
-    imagemUrl:
-        'https://images.unsplash.com/photo-1535930739174-9a685750342f?w=400',
+    imagemUrl: 'https://www.falcortravels.com/wp-content/uploads/2017/06/os_principais_pratos_tipicos_italianos_10-1024x682.jpg',
     receitas: [
       Receita(
         id: 'r1',
         titulo: 'Espaguete à Carbonara',
         descricao: 'Clássico italiano com ovos, queijo e bacon.',
         imagemUrl:
-            'https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=400',
+            'https://viagem.cnnbrasil.com.br/wp-content/uploads/sites/5/2025/04/Modern-Mamma-Osteria_Carbonara_Mario-Rodrigues.jpg?w=849&h=477&crop=0',
         tempoPreparo: 25,
         dificuldade: Dificuldade.medio,
         ingredientes: [
@@ -40,10 +39,8 @@ final List<Categoria> dataSet = [
       Receita(
         id: 'r2',
         titulo: 'Pizza Margherita',
-        descricao:
-            'Pizza clássica com molho de tomate, mussarela e manjericão fresco.',
-        imagemUrl:
-            'https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=400',
+        descricao: 'Pizza clássica com molho de tomate, mussarela e manjericão fresco.',
+        imagemUrl: 'https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=849&h=477&crop=0',
         tempoPreparo: 40,
         dificuldade: Dificuldade.medio,
         ingredientes: [
@@ -67,18 +64,16 @@ final List<Categoria> dataSet = [
   ),
   Categoria(
     id: 'c2',
-    titulo: 'Rápido & Fácil',
+    titulo: 'Outros',
     cor: Colors.orange,
     descricao: 'Receitas práticas que ficam prontas em poucos minutos.',
-    imagemUrl:
-        'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400',
+    imagemUrl: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=849&h=477&crop=0',
     receitas: [
       Receita(
         id: 'r3',
         titulo: 'Omelete de Queijo',
         descricao: 'Rápido, nutritivo e delicioso para qualquer refeição.',
-        imagemUrl:
-            'https://images.unsplash.com/photo-1595257841889-eca2678457b9?w=400',
+        imagemUrl: 'https://images.unsplash.com/photo-1595257841889-eca2678457b9?w=849&h=477&crop=0',
         tempoPreparo: 10,
         dificuldade: Dificuldade.facil,
         ingredientes: [
@@ -103,15 +98,13 @@ final List<Categoria> dataSet = [
     titulo: 'Asiática',
     cor: Colors.teal,
     descricao: 'Sabores intensos e aromáticos do oriente.',
-    imagemUrl:
-        'https://images.unsplash.com/photo-1553621042-f6e147245754?w=400',
+    imagemUrl: 'https://images.unsplash.com/photo-1553621042-f6e147245754?w=849&h=477&crop=0',
     receitas: [
       Receita(
         id: 'r4',
         titulo: 'Yakissoba Tradicional',
         descricao: 'Macarrão oriental com legumes e molho shoyu.',
-        imagemUrl:
-            'https://images.unsplash.com/photo-1555126634-323283a090fa?w=400',
+        imagemUrl: 'https://images.unsplash.com/photo-1555126634-323283a090fa?w=849&h=477&crop=0',
         tempoPreparo: 30,
         dificuldade: Dificuldade.medio,
         ingredientes: [
@@ -138,15 +131,13 @@ final List<Categoria> dataSet = [
     titulo: 'Saudável',
     cor: Colors.green,
     descricao: 'Receitas leves, equilibradas e cheias de nutrientes.',
-    imagemUrl:
-        'https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=400',
+    imagemUrl: 'https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=849&h=477&crop=0',
     receitas: [
       Receita(
         id: 'r5',
         titulo: 'Salada Mediterrânea',
         descricao: 'Leve, refrescante e rica em fibras e antioxidantes.',
-        imagemUrl:
-            'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400',
+        imagemUrl: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=849&h=477&crop=0',
         tempoPreparo: 15,
         dificuldade: Dificuldade.facil,
         ingredientes: [
@@ -173,15 +164,13 @@ final List<Categoria> dataSet = [
     titulo: 'Brasileira',
     cor: Colors.blue,
     descricao: 'Pratos típicos e sabores regionais do Brasil.',
-    imagemUrl:
-        'https://images.unsplash.com/photo-1481931098730-318b6f776db0?w=400',
+    imagemUrl: 'https://images.unsplash.com/photo-1481931098730-318b6f776db0?w=849&h=477&crop=0',
     receitas: [
       Receita(
         id: 'r6',
         titulo: 'Feijoada Completa',
         descricao: 'Tradicional prato brasileiro com feijão preto e carnes.',
-        imagemUrl:
-            'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=400',
+        imagemUrl: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=849&h=477&crop=0',
         tempoPreparo: 120,
         dificuldade: Dificuldade.dificil,
         ingredientes: [
@@ -208,15 +197,13 @@ final List<Categoria> dataSet = [
     titulo: 'Sobremesas',
     cor: Colors.purple,
     descricao: 'Doces irresistíveis para todos os gostos.',
-    imagemUrl:
-        'https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=400',
+    imagemUrl: 'https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=849&h=477&crop=0',
     receitas: [
       Receita(
         id: 'r7',
         titulo: 'Brownie de Chocolate',
         descricao: 'Brownie fudgy com casca crocante e interior macio.',
-        imagemUrl:
-            'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400',
+        imagemUrl: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=849&h=477&crop=0',
         tempoPreparo: 45,
         dificuldade: Dificuldade.medio,
         ingredientes: [
@@ -240,17 +227,15 @@ final List<Categoria> dataSet = [
   Categoria(
     id: 'c7',
     titulo: 'Vegetariana',
-    cor: Colors.lightGreen,
+    cor: Colors.lightGreen.shade700,
     descricao: 'Pratos saborosos sem carne, ricos em vegetais.',
-    imagemUrl:
-        'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400',
+    imagemUrl: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=849&h=477&crop=0',
     receitas: [
       Receita(
         id: 'r8',
         titulo: 'Lasanha de Berinjela',
         descricao: 'Lasanha vegetariana com berinjela e queijos.',
-        imagemUrl:
-            'https://images.unsplash.com/photo-1574894709920-11b28e7367e3?w=400',
+        imagemUrl: 'https://images.unsplash.com/photo-1574894709920-11b28e7367e3?w=849&h=477&crop=0',
         tempoPreparo: 60,
         dificuldade: Dificuldade.medio,
         ingredientes: [
@@ -276,15 +261,13 @@ final List<Categoria> dataSet = [
     titulo: 'Frutos do Mar',
     cor: Colors.blue,
     descricao: 'Pratos sofisticados com peixes e frutos do mar.',
-    imagemUrl:
-        'https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400',
+    imagemUrl: 'https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=849&h=477&crop=0',
     receitas: [
       Receita(
         id: 'r9',
         titulo: 'Salmão Grelhado',
         descricao: 'Salmão grelhado com ervas e limão.',
-        imagemUrl:
-            'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=400',
+        imagemUrl: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=849&h=477&crop=0',
         tempoPreparo: 20,
         dificuldade: Dificuldade.facil,
         ingredientes: [
@@ -307,17 +290,15 @@ final List<Categoria> dataSet = [
   Categoria(
     id: 'c9',
     titulo: 'Café da Manhã',
-    cor: Colors.amber,
+    cor: Colors.amber.shade800,
     descricao: 'Receitas matinais para começar o dia com energia.',
-    imagemUrl:
-        'https://images.unsplash.com/photo-1551782450-17144efb9c50?w=400',
+    imagemUrl: 'https://images.unsplash.com/photo-1551782450-17144efb9c50?w=849&h=477&crop=0',
     receitas: [
       Receita(
         id: 'r10',
         titulo: 'Panquecas Americanas',
         descricao: 'Panquecas fofas e douradas com mel ou maple syrup.',
-        imagemUrl:
-            'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400',
+        imagemUrl: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=849&h=477&crop=0',
         tempoPreparo: 25,
         dificuldade: Dificuldade.facil,
         ingredientes: [
@@ -344,23 +325,16 @@ final List<Categoria> dataSet = [
     titulo: 'Churrasco',
     cor: Colors.blueGrey,
     descricao: 'Cortes especiais e técnicas para churrasco perfeito.',
-    imagemUrl:
-        'https://images.unsplash.com/photo-1558036117-15e82a2c9a9a?w=400',
+    imagemUrl: 'https://t4.ftcdn.net/jpg/13/93/04/03/360_F_1393040319_m6CgOm67Xesl3kVB5ytj40nlQwlwm3Az.webp',
     receitas: [
       Receita(
         id: 'r11',
         titulo: 'Picanha na Churrasqueira',
         descricao: 'Picanha suculenta com sal grosso e tempero simples.',
-        imagemUrl:
-            'https://images.unsplash.com/photo-1551388293-4a6c9a5c4b5a?w=400',
+        imagemUrl: 'https://images.unsplash.com/photo-1551388293-4a6c9a5c4b5a?w=849&h=477&crop=0',
         tempoPreparo: 40,
         dificuldade: Dificuldade.medio,
-        ingredientes: [
-          '1 peça de picanha (1,5kg)',
-          'Sal grosso a gosto',
-          '4 dentes de alho amassados',
-          'Pimenta do reino',
-        ],
+        ingredientes: ['1 peça de picanha (1,5kg)', 'Sal grosso a gosto', '4 dentes de alho amassados', 'Pimenta do reino'],
         passos: [
           'Tempere a picanha com alho e pimenta.',
           'Deixe descansar por 30 minutos.',
@@ -372,53 +346,21 @@ final List<Categoria> dataSet = [
       ),
     ],
   ),
-  // Categoria(
-  //   id: 'c11',
-  //   titulo: 'Low Carb',
-  //   cor: Colors.lightBlue,
-  //   descricao: 'Receitas com baixo teor de carboidratos.',
-  //   imagemUrl:
-  //       'https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=400',
-  //   receitas: [
-  //     Receita(
-  //       id: 'r12',
-  //       titulo: 'Couve-Flor Gratinada',
-  //       descricao: 'Gratinado low carb com couve-flor e queijos.',
-  //       imagemUrl:
-  //           'https://images.unsplash.com/photo-1570197788417-0e82375c9371?w=400',
-  //       tempoPreparo: 35,
-  //       dificuldade: Dificuldade.facil,
-  //       ingredientes: [
-  //         '1 couve-flor média',
-  //         '200g de queijo cheddar',
-  //         '100ml de creme de leite',
-  //         '50g de queijo parmesão',
-  //         'Manteiga para untar',
-  //       ],
-  //       passos: [
-  //         'Cozinhe a couve-flor até ficar al dente.',
-  //         'Misture com creme de leite e cheddar.',
-  //         'Transfira para uma forma untada.',
-  //         'Polvilhe parmesão por cima.',
-  //         'Asse a 200°C por 20 minutos.',
-  //       ],
-  //     ),
-  //   ],
-  // ),
+
   // Categoria(
   //   id: 'c12',
   //   titulo: 'Sopas & Caldos',
   //   cor: Colors.orange,
   //   descricao: 'Reconfortantes sopas para dias frios.',
   //   imagemUrl:
-  //       'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=400',
+  //       'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=849&h=477&crop=0',
   //   receitas: [
   //     Receita(
   //       id: 'r13',
   //       titulo: 'Sopa de Legumes',
   //       descricao: 'Sopa cremosa e nutritiva com legumes da estação.',
   //       imagemUrl:
-  //           'https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?w=400',
+  //           'https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?w=849&h=477&crop=0',
   //       tempoPreparo: 50,
   //       dificuldade: Dificuldade.facil,
   //       ingredientes: [
@@ -446,14 +388,14 @@ final List<Categoria> dataSet = [
   //   cor: Colors.yellow,
   //   descricao: 'Variedade de massas com molhos especiais.',
   //   imagemUrl:
-  //       'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=400',
+  //       'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=849&h=477&crop=0',
   //   receitas: [
   //     Receita(
   //       id: 'r14',
   //       titulo: 'Fettuccine Alfredo',
   //       descricao: 'Massa com molho cremoso de queijo parmesão.',
   //       imagemUrl:
-  //           'https://images.unsplash.com/photo-1605537925581-0156d1d4e4c3?w=400',
+  //           'https://images.unsplash.com/photo-1605537925581-0156d1d4e4c3?w=849&h=477&crop=0',
   //       tempoPreparo: 25,
   //       dificuldade: Dificuldade.medio,
   //       ingredientes: [
@@ -480,14 +422,14 @@ final List<Categoria> dataSet = [
   //   cor: Colors.cyan,
   //   descricao: 'Drinks, sucos e coquetéis especiais.',
   //   imagemUrl:
-  //       'https://images.unsplash.com/photo-1544145945-f90425340c7e?w=400',
+  //       'https://images.unsplash.com/photo-1544145945-f90425340c7e?w=849&h=477&crop=0',
   //   receitas: [
   //     Receita(
   //       id: 'r15',
   //       titulo: 'Mojito Tradicional',
   //       descricao: 'Coquetel cubano refrescante com hortelã e limão.',
   //       imagemUrl:
-  //           'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=400',
+  //           'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=849&h=477&crop=0',
   //       tempoPreparo: 10,
   //       dificuldade: Dificuldade.facil,
   //       ingredientes: [
@@ -514,14 +456,14 @@ final List<Categoria> dataSet = [
   //   cor: Colors.lightGreen,
   //   descricao: 'Receitas 100% vegetais sem ingredientes de origem animal.',
   //   imagemUrl:
-  //       'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400',
+  //       'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=849&h=477&crop=0',
   //   receitas: [
   //     Receita(
   //       id: 'r16',
   //       titulo: 'Hambúrguer de Grão-de-Bico',
   //       descricao: 'Hambúrguer vegano nutritivo e saboroso.',
   //       imagemUrl:
-  //           'https://images.unsplash.com/photo-1525059696034-4967a7290021?w=400',
+  //           'https://images.unsplash.com/photo-1525059696034-4967a7290021?w=849&h=477&crop=0',
   //       tempoPreparo: 35,
   //       dificuldade: Dificuldade.medio,
   //       ingredientes: [

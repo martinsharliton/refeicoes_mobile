@@ -28,7 +28,7 @@ class _RefeicoesCategoriaPageState extends State<RefeicoesCategoriaPage> {
               return const Center(
                 child: Text(
                   'Nenhuma receita disponível para esta categoria.',
-                  style: TextStyle(fontSize: 16, color: Colors.grey),
+                  style: TextStyle(fontSize: 16, color: Colors.black),
                 ),
               );
             }
@@ -43,7 +43,7 @@ class _RefeicoesCategoriaPageState extends State<RefeicoesCategoriaPage> {
                     itemCount: receitas.length,
                     itemBuilder: (context, index) {
                       final receita = receitas[index];
-                      return ItemRefeicoes(receita: receita);
+                      return ItemRefeicoes(receita: receita, cor: categoria.cor);
                     },
                   ),
                 ),

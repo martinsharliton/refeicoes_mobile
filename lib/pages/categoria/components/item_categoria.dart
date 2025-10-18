@@ -6,7 +6,7 @@ import '../../refeicoes_categoria/refeicoes_categoria_page.dart';
 class ItemCategoria extends StatelessWidget {
   final Categoria categoria;
 
-  const ItemCategoria(this.categoria, {super.key});
+  const ItemCategoria({required this.categoria, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,17 +15,30 @@ class ItemCategoria extends StatelessWidget {
         selecionarCategoria(context);
       },
       child: Container(
-        padding: const EdgeInsets.all(15),
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: categoria.cor),
-        child: Text(
-          categoria.titulo,
-          style: TextStyle(fontWeight: FontWeight.w800, fontSize: 18, color: Colors.white),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.black87,
+          image: DecorationImage(image: NetworkImage(categoria.imagemUrl), fit: BoxFit.cover, opacity: 0.8),
+        ),
+        child: Container(
+          decoration: BoxDecoration(color: Colors.black26, borderRadius: BorderRadius.circular(20)),
+          padding: EdgeInsets.only(left: 10, top: 10),
+          child: Text(
+            categoria.titulo,
+            style: TextStyle(fontWeight: FontWeight.w900, fontSize: 18, color: Colors.white),
+          ),
         ),
       ),
     );
   }
 
   void selecionarCategoria(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => RefeicoesCategoriaPage(categoria: categoria)));
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) {
+          return RefeicoesCategoriaPage(categoria: categoria);
+        },
+      ),
+    );
   }
 }
