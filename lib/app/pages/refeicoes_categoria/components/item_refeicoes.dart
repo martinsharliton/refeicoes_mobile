@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../config/exetension/extension.dart';
 import '../../../models/receita.dart';
 import '../../receitas_refeicoes/receitas_refeicoes_page.dart';
 
@@ -56,7 +57,7 @@ class ItemRefeicoes extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(spacing: 5, children: [const Icon(Icons.schedule, size: 16), Text('${receita.tempoPreparo} min')]),
-                      Row(spacing: 5, children: [const Icon(Icons.work, size: 16), Text(receita.dificuldade.name)]),
+                      Row(spacing: 5, children: [const Icon(Icons.work, size: 16), Text(receita.dificuldade.name.capitalize())]),
                     ],
                   ),
                 ],

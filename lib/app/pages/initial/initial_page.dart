@@ -25,7 +25,7 @@ class _InitialPageState extends State<InitialPage> with SingleTickerProviderStat
 
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await Future.delayed(const Duration(milliseconds: 2000));
-      Navigator.of(context).push(MaterialPageRoute(builder: (_) => const CategoriaPage()));
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => const CategoriaPage()));
     });
   }
 

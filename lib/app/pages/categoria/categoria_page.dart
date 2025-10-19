@@ -8,13 +8,10 @@ class CategoriaPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    dataSet.sort((a, b) => a.titulo.compareTo(b.titulo));
+    listaDeCategorias.sort((a, b) => a.titulo.compareTo(b.titulo));
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Center(child: Text('Minhas Receitas')),
-        backgroundColor: Color.fromARGB(255, 207, 171, 137),
-      ),
+      appBar: AppBar(title: Text('Minhas Receitas'), backgroundColor: Color.fromARGB(255, 207, 171, 137)),
       drawer: Drawer(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -45,9 +42,17 @@ class CategoriaPage extends StatelessWidget {
           crossAxisSpacing: 15,
           mainAxisSpacing: 15,
         ),
-        children: dataSet.map((categoria) {
+        children: listaDeCategorias.map((categoria) {
           return ItemCategoria(categoria: categoria);
         }).toList(),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Adicionar nova categoria
+        },
+        foregroundColor: Colors.white,
+        backgroundColor: Color.fromARGB(255, 207, 171, 137),
+        child: const Icon(Icons.add),
       ),
     );
   }

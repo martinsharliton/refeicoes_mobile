@@ -13,7 +13,7 @@ class ReceitasRefeicoesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(receita.titulo), backgroundColor: cor),
-      body: Column(
+      body: ListView(
         children: [
           Stack(
             children: [
@@ -41,38 +41,40 @@ class ReceitasRefeicoesPage extends StatelessWidget {
               ),
             ],
           ),
-          Expanded(
-            child: ListView(
-              children: [
-                Builder(
-                  builder: (context) {
-                    if (receita.ingredientes.isEmpty) {
-                      return const Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Text('Nenhum ingrediente disponível para esta receita.', style: TextStyle(fontSize: 16)),
-                      );
-                    }
+          Builder(
+            builder: (context) {
+              if (receita.ingredientes.isEmpty) {
+                return const Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Text('Nenhum ingrediente disponível para esta receita.', style: TextStyle(fontSize: 16)),
+                );
+              }
 
-                    return ItemReceitaRefeicao(titulo: 'Ingredientes', itens: receita.ingredientes, cor: cor);
-                  },
-                ),
+              return ItemReceitaRefeicao(titulo: 'Ingredientes', itens: receita.ingredientes, cor: cor);
+            },
+          ),
 
-                Builder(
-                  builder: (context) {
-                    if (receita.passos.isEmpty) {
-                      return const Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Text('Nenhum passo disponível para esta receita.', style: TextStyle(fontSize: 16)),
-                      );
-                    }
+          Builder(
+            builder: (context) {
+              if (receita.passos.isEmpty) {
+                return const Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Text('Nenhum passo disponível para esta receita.', style: TextStyle(fontSize: 16)),
+                );
+              }
 
-                    return ItemReceitaRefeicao(titulo: 'Passos', itens: receita.passos, cor: cor);
-                  },
-                ),
-              ],
-            ),
+              return ItemReceitaRefeicao(titulo: 'Passos', itens: receita.passos, cor: cor);
+            },
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Adicionar nova categoria
+        },
+        foregroundColor: Colors.white,
+        backgroundColor: Color.fromARGB(255, 207, 171, 137),
+        child: const Icon(Icons.favorite_border),
       ),
     );
   }

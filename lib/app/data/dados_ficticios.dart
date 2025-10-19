@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../models/categoria.dart';
 import '../models/receita.dart';
 
-final List<Categoria> dataSet = [
+final List<Categoria> listaDeCategorias = [
   Categoria(
     id: 'c1',
     titulo: 'Italiana',
@@ -73,7 +73,7 @@ final List<Categoria> dataSet = [
         id: 'r3',
         titulo: 'Omelete de Queijo',
         descricao: 'Rápido, nutritivo e delicioso para qualquer refeição.',
-        imagemUrl: 'https://images.unsplash.com/photo-1595257841889-eca2678457b9?w=849&h=477&crop=0',
+        imagemUrl: 'https://receitadaboa.com.br/wp-content/uploads/2024/09/iStock-1048121658.jpg',
         tempoPreparo: 10,
         dificuldade: Dificuldade.facil,
         ingredientes: [
@@ -104,7 +104,7 @@ final List<Categoria> dataSet = [
         id: 'r4',
         titulo: 'Yakissoba Tradicional',
         descricao: 'Macarrão oriental com legumes e molho shoyu.',
-        imagemUrl: 'https://images.unsplash.com/photo-1555126634-323283a090fa?w=849&h=477&crop=0',
+        imagemUrl: 'https://rebalcomvoce.com.br/wp-content/uploads/2019/03/yakisoba.jpg',
         tempoPreparo: 30,
         dificuldade: Dificuldade.medio,
         ingredientes: [
@@ -331,7 +331,7 @@ final List<Categoria> dataSet = [
         id: 'r11',
         titulo: 'Picanha na Churrasqueira',
         descricao: 'Picanha suculenta com sal grosso e tempero simples.',
-        imagemUrl: 'https://images.unsplash.com/photo-1551388293-4a6c9a5c4b5a?w=849&h=477&crop=0',
+        imagemUrl: 'https://www.diariodocentrodomundo.com.br/wp-content/uploads/2025/06/36b03942-348a-4d2c-b2fc-498e32de5c04.jpg',
         tempoPreparo: 40,
         dificuldade: Dificuldade.medio,
         ingredientes: ['1 peça de picanha (1,5kg)', 'Sal grosso a gosto', '4 dentes de alho amassados', 'Pimenta do reino'],
