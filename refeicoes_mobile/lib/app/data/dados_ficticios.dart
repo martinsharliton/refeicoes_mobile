@@ -13,6 +13,7 @@ final List<Categoria> listaDeCategorias = [
     receitas: [
       Receita(
         id: 'r1',
+        idCategoria: 'c1',
         titulo: 'Espaguete à Carbonara',
         descricao: 'Clássico italiano com ovos, queijo e bacon.',
         imagemUrl:
@@ -38,6 +39,7 @@ final List<Categoria> listaDeCategorias = [
       ),
       Receita(
         id: 'r2',
+        idCategoria: 'c1',
         titulo: 'Pizza Margherita',
         descricao: 'Pizza clássica com molho de tomate, mussarela e manjericão fresco.',
         imagemUrl: 'https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=849&h=477&crop=0',
@@ -71,6 +73,7 @@ final List<Categoria> listaDeCategorias = [
     receitas: [
       Receita(
         id: 'r3',
+        idCategoria: 'c2',
         titulo: 'Omelete de Queijo',
         descricao: 'Rápido, nutritivo e delicioso para qualquer refeição.',
         imagemUrl: 'https://receitadaboa.com.br/wp-content/uploads/2024/09/iStock-1048121658.jpg',
@@ -102,6 +105,7 @@ final List<Categoria> listaDeCategorias = [
     receitas: [
       Receita(
         id: 'r4',
+        idCategoria: 'c3',
         titulo: 'Yakissoba Tradicional',
         descricao: 'Macarrão oriental com legumes e molho shoyu.',
         imagemUrl: 'https://rebalcomvoce.com.br/wp-content/uploads/2019/03/yakisoba.jpg',
@@ -135,6 +139,7 @@ final List<Categoria> listaDeCategorias = [
     receitas: [
       Receita(
         id: 'r5',
+        idCategoria: 'c4',
         titulo: 'Salada Mediterrânea',
         descricao: 'Leve, refrescante e rica em fibras e antioxidantes.',
         imagemUrl: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=849&h=477&crop=0',
@@ -168,6 +173,7 @@ final List<Categoria> listaDeCategorias = [
     receitas: [
       Receita(
         id: 'r6',
+        idCategoria: 'c5',
         titulo: 'Feijoada Completa',
         descricao: 'Tradicional prato brasileiro com feijão preto e carnes.',
         imagemUrl: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=849&h=477&crop=0',
@@ -201,6 +207,7 @@ final List<Categoria> listaDeCategorias = [
     receitas: [
       Receita(
         id: 'r7',
+        idCategoria: 'c6',
         titulo: 'Brownie de Chocolate',
         descricao: 'Brownie fudgy com casca crocante e interior macio.',
         imagemUrl: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=849&h=477&crop=0',
@@ -233,6 +240,7 @@ final List<Categoria> listaDeCategorias = [
     receitas: [
       Receita(
         id: 'r8',
+        idCategoria: 'c7',
         titulo: 'Lasanha de Berinjela',
         descricao: 'Lasanha vegetariana com berinjela e queijos.',
         imagemUrl: 'https://images.unsplash.com/photo-1574894709920-11b28e7367e3?w=849&h=477&crop=0',
@@ -265,6 +273,7 @@ final List<Categoria> listaDeCategorias = [
     receitas: [
       Receita(
         id: 'r9',
+        idCategoria: 'c8',
         titulo: 'Salmão Grelhado',
         descricao: 'Salmão grelhado com ervas e limão.',
         imagemUrl: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=849&h=477&crop=0',
@@ -296,6 +305,7 @@ final List<Categoria> listaDeCategorias = [
     receitas: [
       Receita(
         id: 'r10',
+        idCategoria: 'c9',
         titulo: 'Panquecas Americanas',
         descricao: 'Panquecas fofas e douradas com mel ou maple syrup.',
         imagemUrl: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=849&h=477&crop=0',
@@ -329,6 +339,7 @@ final List<Categoria> listaDeCategorias = [
     receitas: [
       Receita(
         id: 'r11',
+        idCategoria: 'c10',
         titulo: 'Picanha na Churrasqueira',
         descricao: 'Picanha suculenta com sal grosso e tempero simples.',
         imagemUrl: 'https://www.diariodocentrodomundo.com.br/wp-content/uploads/2025/06/36b03942-348a-4d2c-b2fc-498e32de5c04.jpg',

@@ -32,8 +32,9 @@ class ReceitasRefeicoesPage extends StatelessWidget {
                 width: double.infinity,
                 color: Colors.black45,
                 child: Padding(
-                  padding: const EdgeInsets.all(7),
+                  padding: const EdgeInsets.all(10),
                   child: Text(
+                    textAlign: TextAlign.justify,
                     receita.descricao,
                     style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
                   ),

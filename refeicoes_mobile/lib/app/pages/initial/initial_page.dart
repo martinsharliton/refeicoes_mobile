@@ -17,7 +17,7 @@ class _InitialPageState extends State<InitialPage> with SingleTickerProviderStat
   void initState() {
     super.initState();
 
-    _controller = AnimationController(vsync: this, duration: const Duration(milliseconds: 800));
+    _controller = AnimationController(vsync: this, duration: const Duration(milliseconds: 600));
 
     _animation = CurvedAnimation(parent: _controller, curve: Curves.easeInOut);
 
