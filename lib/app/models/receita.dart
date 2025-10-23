@@ -2,7 +2,6 @@ enum Dificuldade { facil, medio, dificil }
 
 class Receita {
   final String id;
-  final String idCategoria;
   final String titulo;
   final String descricao;
   final String imagemUrl;
@@ -13,7 +12,6 @@ class Receita {
 
   const Receita({
     required this.id,
-    required this.idCategoria,
     required this.titulo,
     required this.descricao,
     required this.imagemUrl,
