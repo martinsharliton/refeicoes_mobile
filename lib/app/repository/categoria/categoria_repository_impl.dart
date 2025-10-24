@@ -6,7 +6,7 @@ import 'package:multiple_result/multiple_result.dart';
 
 import '../../core/dio_failure.dart';
 import '../../core/exceptions/failure.dart';
-import '../../models/categoria_response_dto.dart';
+import '../../models/categoria/categoria_response_dto.dart';
 import 'categoria_repository.dart';
 
 class CategoriaRepositoryImpl implements CategoriaRepository {

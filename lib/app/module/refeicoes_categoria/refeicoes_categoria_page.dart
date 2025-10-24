@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../models/categoria_response_dto.dart';
+import '../../models/categoria/categoria_response_dto.dart';
 
 class RefeicoesCategoriaPage extends StatefulWidget {
   final CategoriaResponseDTO categoria;

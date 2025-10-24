@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../models/categoria_response_dto.dart';
+import '../../../models/categoria/categoria_response_dto.dart';
 import '../../refeicoes_categoria/refeicoes_categoria_page.dart';
 
 class ItemCategoria extends StatelessWidget {

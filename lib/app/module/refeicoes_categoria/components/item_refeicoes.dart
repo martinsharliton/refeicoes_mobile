@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../config/exetension/extension.dart';
-import '../../../models/receita_response_dto.dart';
+import '../../../models/receita/receita_response_dto.dart';
 import '../../receitas_refeicoes/receitas_refeicoes_page.dart';
 
 class ItemRefeicoes extends StatelessWidget {

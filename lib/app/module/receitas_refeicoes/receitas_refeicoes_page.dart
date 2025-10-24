@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../models/receita_response_dto.dart';
+import '../../models/receita/receita_response_dto.dart';
 import 'components/item_receita_refeicao.dart';
 
 class ReceitasRefeicoesPage extends StatelessWidget {

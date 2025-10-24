@@ -2,7 +2,7 @@ import 'package:mobx/mobx.dart';
 
 import '../../core/api_handler.dart';
 import '../../core/page_status.dart';
-import '../../models/categoria_response_dto.dart';
+import '../../models/categoria/categoria_response_dto.dart';
 import '../../repository/categoria/categoria_repository.dart';
 
 part 'categoria_controller.g.dart';
