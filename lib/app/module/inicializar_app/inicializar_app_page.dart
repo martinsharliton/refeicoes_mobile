@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
-import '../categoria/categoria_page.dart';
+import '../../app_module.dart';
 
-class InitialPage extends StatefulWidget {
-  const InitialPage({super.key});
+class InicializarAppPage extends StatefulWidget {
+  const InicializarAppPage({super.key});
 
   @override
-  State<InitialPage> createState() => _InitialPageState();
+  State<InicializarAppPage> createState() => _InicializarAppPageState();
 }
 
-class _InitialPageState extends State<InitialPage> with SingleTickerProviderStateMixin {
+class _InicializarAppPageState extends State<InicializarAppPage> with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
   late final Animation<double> _animation;
 
@@ -18,14 +19,12 @@ class _InitialPageState extends State<InitialPage> with SingleTickerProviderStat
     super.initState();
 
     _controller = AnimationController(vsync: this, duration: const Duration(milliseconds: 800));
-
     _animation = CurvedAnimation(parent: _controller, curve: Curves.easeInOut);
-
     _controller.forward();
 
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await Future.delayed(const Duration(milliseconds: 2000));
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => const CategoriaPage()));
+      Modular.to.navigate(routeCategoria);
     });
   }
 

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 import '../../../config/exetension/extension.dart';
-import '../../../models/receita.dart';
+import '../../../models/receita_response_dto.dart';
 import '../../receitas_refeicoes/receitas_refeicoes_page.dart';
 
 class ItemRefeicoes extends StatelessWidget {
-  final Receita receita;
+  final ReceitaResponseDTO receita;
   final Color cor;
 
   const ItemRefeicoes({super.key, required this.receita, required this.cor});
@@ -29,7 +29,7 @@ class ItemRefeicoes extends StatelessWidget {
             ClipRRect(
               borderRadius: const BorderRadius.vertical(top: Radius.circular(10)),
               child: Image.network(
-                receita.imagemUrl,
+                receita.imagemUrl ?? '-',
                 height: 180,
                 width: double.infinity,
                 fit: BoxFit.cover,
@@ -52,12 +52,12 @@ class ItemRefeicoes extends StatelessWidget {
                 spacing: 8,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(receita.titulo, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  Text(receita.titulo ?? '-', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(spacing: 5, children: [const Icon(Icons.schedule, size: 16), Text('${receita.tempoPreparo} min')]),
-                      Row(spacing: 5, children: [const Icon(Icons.work, size: 16), Text(receita.dificuldade.name.capitalize())]),
+                      Row(spacing: 5, children: [const Icon(Icons.work, size: 16), Text(receita.dificuldade?.capitalize() ?? '-')]),
                     ],
                   ),
                 ],

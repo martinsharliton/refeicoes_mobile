@@ -6,21 +6,24 @@
      "configurations": [
           
           {
-               "name": "refeicoes",
-               "request": "launch",
-               "type": "dart"
-          },
-          {
-               "name": "refeicoes (profile mode)",
+               "name": "receitas",
                "request": "launch",
                "type": "dart",
-               "flutterMode": "profile"
+               "args": ["--dart-define-from-file", "env.local.json"]
           },
           {
-               "name": "refeicoes (release mode)",
+               "name": "receitas (profile mode)",
                "request": "launch",
                "type": "dart",
-               "flutterMode": "release"
+               "flutterMode": "profile",
+               "args": ["--dart-define-from-file", "env.local.json"]
+          },
+          {
+               "name": "receitas (release mode)",
+               "request": "launch",
+               "type": "dart",
+               "flutterMode": "release",
+               "args": ["--dart-define-from-file", "env.local.json"]
           }
      ]
 }

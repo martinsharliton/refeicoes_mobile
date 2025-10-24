@@ -10,6 +10,7 @@ class SettingsTheme {
     scaffoldBackgroundColor: Colors.grey[200],
     appBarTheme: AppBarTheme(
       iconTheme: IconThemeData(color: Colors.white),
+      backgroundColor: Colors.blueGrey,
       centerTitle: true,
       titleTextStyle: TextStyle(
         fontFamily: 'RobotoCondensed-Bold',
