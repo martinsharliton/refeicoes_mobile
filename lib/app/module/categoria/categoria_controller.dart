@@ -2,6 +2,7 @@ import 'package:mobx/mobx.dart';
 
 import '../../core/api_handler.dart';
 import '../../core/page_status.dart';
+import '../../models/categoria/categoria_model.dart';
 import '../../models/categoria/categoria_response_dto.dart';
 import '../../repository/categoria/categoria_repository.dart';
 
@@ -10,7 +11,7 @@ part 'categoria_controller.g.dart';
 class CategoriaController = CategoriaControllerBase with _$CategoriaController;
 
 abstract class CategoriaControllerBase with Store {
-  final CategoriaRepository categoria;
+  final CategoriaRepository categoriaRepository;
 
   @readonly
   var _listCategorias = ObservableList<CategoriaResponseDTO>();
@@ -24,7 +25,13 @@ abstract class CategoriaControllerBase with Store {
   @readonly
   String? _errorMessage;
 
-  CategoriaControllerBase(this.categoria);
+  @readonly
+  String? _imagemSelecionada;
+
+  @readonly
+  bool _imagemError = false;
+
+  CategoriaControllerBase(this.categoriaRepository);
 
   @action
   Future<void> loadingListCategorias() async {
@@ -33,7 +40,7 @@ abstract class CategoriaControllerBase with Store {
     _status = PageStatus.loading;
 
     await handleApiCall(
-      categoria.findAll(),
+      categoriaRepository.findAll(),
       onSuccess: (result) async {
         _listCategorias.clear();
         _listCategorias.addAll(result);
@@ -44,5 +51,33 @@ abstract class CategoriaControllerBase with Store {
         _status = PageStatus.error;
       },
     );
+  }
+
+  @action
+  Future<void> criarNovaCategoria({required CategoriaModel categoria}) async {
+    _errorMessage = null;
+    _successMessage = null;
+
+    await handleApiCall(
+      categoriaRepository.createCategoria(categoria: categoria),
+      onSuccess: (result) async {
+        _listCategorias.add(result);
+        _status = PageStatus.loaded;
+      },
+      onError: (message) {
+        _errorMessage = message;
+        _status = PageStatus.error;
+      },
+    );
+  }
+
+  @action
+  void setImage(String? image) {
+    _imagemSelecionada = image;
+  }
+
+  @action
+  void setImageError(bool value) {
+    _imagemError = value;
   }
 }

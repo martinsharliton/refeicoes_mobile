@@ -89,6 +89,46 @@ mixin _$CategoriaController on CategoriaControllerBase, Store {
     });
   }
 
+  late final _$_imagemSelecionadaAtom = Atom(
+    name: 'CategoriaControllerBase._imagemSelecionada',
+    context: context,
+  );
+
+  String? get imagemSelecionada {
+    _$_imagemSelecionadaAtom.reportRead();
+    return super._imagemSelecionada;
+  }
+
+  @override
+  String? get _imagemSelecionada => imagemSelecionada;
+
+  @override
+  set _imagemSelecionada(String? value) {
+    _$_imagemSelecionadaAtom.reportWrite(value, super._imagemSelecionada, () {
+      super._imagemSelecionada = value;
+    });
+  }
+
+  late final _$_imagemErrorAtom = Atom(
+    name: 'CategoriaControllerBase._imagemError',
+    context: context,
+  );
+
+  bool get imagemError {
+    _$_imagemErrorAtom.reportRead();
+    return super._imagemError;
+  }
+
+  @override
+  bool get _imagemError => imagemError;
+
+  @override
+  set _imagemError(bool value) {
+    _$_imagemErrorAtom.reportWrite(value, super._imagemError, () {
+      super._imagemError = value;
+    });
+  }
+
   late final _$loadingListCategoriasAsyncAction = AsyncAction(
     'CategoriaControllerBase.loadingListCategorias',
     context: context,
@@ -99,6 +139,47 @@ mixin _$CategoriaController on CategoriaControllerBase, Store {
     return _$loadingListCategoriasAsyncAction.run(
       () => super.loadingListCategorias(),
     );
+  }
+
+  late final _$criarNovaCategoriaAsyncAction = AsyncAction(
+    'CategoriaControllerBase.criarNovaCategoria',
+    context: context,
+  );
+
+  @override
+  Future<void> criarNovaCategoria({required CategoriaModel categoria}) {
+    return _$criarNovaCategoriaAsyncAction.run(
+      () => super.criarNovaCategoria(categoria: categoria),
+    );
+  }
+
+  late final _$CategoriaControllerBaseActionController = ActionController(
+    name: 'CategoriaControllerBase',
+    context: context,
+  );
+
+  @override
+  void setImage(String? image) {
+    final _$actionInfo = _$CategoriaControllerBaseActionController.startAction(
+      name: 'CategoriaControllerBase.setImage',
+    );
+    try {
+      return super.setImage(image);
+    } finally {
+      _$CategoriaControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setImageError(bool value) {
+    final _$actionInfo = _$CategoriaControllerBaseActionController.startAction(
+      name: 'CategoriaControllerBase.setImageError',
+    );
+    try {
+      return super.setImageError(value);
+    } finally {
+      _$CategoriaControllerBaseActionController.endAction(_$actionInfo);
+    }
   }
 
   @override

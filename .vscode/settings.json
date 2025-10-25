@@ -14,5 +14,5 @@
         "source.fixAll": "always",
         "source.organizeImports": "always"
     },
-    "dart.lineLength": 130,
+    "dart.lineLength": 120,
 }

@@ -24,7 +24,7 @@ class AppStyles {
   }
 
   ButtonStyle get textButton => TextButton.styleFrom(
-    textStyle: TextStyles.instance.textSecondaryButtonLabel.copyWith(fontSize: 16, fontWeight: FontWeight.w500),
+    textStyle: TextStyles.instance.textSecondaryButtonLabel.copyWith(fontSize: 16, fontWeight: FontWeight.w600),
     foregroundColor: ColorsApp.instance.primary,
   );
 }

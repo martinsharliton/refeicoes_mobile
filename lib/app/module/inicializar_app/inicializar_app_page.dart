@@ -40,11 +40,11 @@ class _InicializarAppPageState extends State<InicializarAppPage> with SingleTick
       canPop: false,
       child: Scaffold(
         body: Container(
-          decoration: const BoxDecoration(color: Color(0xFFF1E3D6)),
+          decoration: BoxDecoration(color: Colors.transparent),
           child: Center(
             child: FadeTransition(
               opacity: _animation,
-              child: Image.asset('assets/images/mae.jpg', fit: BoxFit.cover),
+              child: Image.asset('assets/images/mae_wb.png', fit: BoxFit.cover),
             ),
           ),
         ),

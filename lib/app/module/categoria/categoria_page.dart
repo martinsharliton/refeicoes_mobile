@@ -8,7 +8,7 @@ import '../../core/messages.dart';
 import '../../core/page_status.dart';
 import '../../core/refresh_data_page.dart';
 import 'categoria_controller.dart';
-import 'components/adiconar_categoria_dialog.dart';
+import 'components/adicionar_categoria_dialog.dart';
 import 'components/item_categoria.dart';
 
 class CategoriaPage extends StatefulWidget {
@@ -75,28 +75,28 @@ class _CategoriaPageState extends State<CategoriaPage> with Loader, Messages {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Minhas Receitas')),
-      // drawer: Drawer(
-      //   child: Column(
-      //     mainAxisSize: MainAxisSize.min,
-      //     children: [
-      //       AppBar(title: const Text('Navegação'), automaticallyImplyLeading: false, backgroundColor: Colors.black87),
-      //       ListTile(
-      //         leading: const Icon(Icons.restaurant),
-      //         title: const Text('Categorias'),
-      //         onTap: () {
-      //           Navigator.of(context).pop();
-      //         },
-      //       ),
-      //       ListTile(
-      //         leading: const Icon(Icons.settings),
-      //         title: const Text('Configurações'),
-      //         onTap: () {
-      //           Navigator.of(context).pop();
-      //         },
-      //       ),
-      //     ],
-      //   ),
-      // ),
+      drawer: Drawer(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            AppBar(title: const Text('Navegação'), automaticallyImplyLeading: false, backgroundColor: Colors.black87),
+            ListTile(
+              leading: const Icon(Icons.restaurant),
+              title: const Text('Categorias'),
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.settings),
+              title: const Text('Configurações'),
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        ),
+      ),
       body: Observer(
         builder: (_) {
           if (controller.listCategorias.isEmpty) {
@@ -126,6 +126,7 @@ class _CategoriaPageState extends State<CategoriaPage> with Loader, Messages {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showDialog(
+            barrierDismissible: false,
             context: context,
             builder: (context) {
               return AdicionarCategoriaDialog(controller: controller);

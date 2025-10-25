@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../models/categoria/categoria_response_dto.dart';
+import 'refeicoes_categoria_controller.dart';
 
 class RefeicoesCategoriaPage extends StatefulWidget {
   final CategoriaResponseDTO categoria;
@@ -11,6 +13,8 @@ class RefeicoesCategoriaPage extends StatefulWidget {
 }
 
 class _RefeicoesCategoriaPageState extends State<RefeicoesCategoriaPage> {
+  final controller = Modular.get<RefeicoesCategoriaController>();
+
   CategoriaResponseDTO get categoria => widget.categoria;
 
   @override

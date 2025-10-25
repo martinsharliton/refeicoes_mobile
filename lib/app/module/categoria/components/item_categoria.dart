@@ -1,30 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../../app_module.dart';
 import '../../../models/categoria/categoria_response_dto.dart';
-import '../../refeicoes_categoria/refeicoes_categoria_page.dart';
 
-class ItemCategoria extends StatelessWidget {
+class ItemCategoria extends StatefulWidget {
   final CategoriaResponseDTO categoria;
 
   const ItemCategoria({required this.categoria, super.key});
 
   @override
+  State<ItemCategoria> createState() => _ItemCategoriaState();
+}
+
+class _ItemCategoriaState extends State<ItemCategoria> {
+  CategoriaResponseDTO get categoria => widget.categoria;
+
+  @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        selecionarCategoria(context);
+        selecionarCategoria();
+      },
+      onDoubleTap: () {
+        selecionarCategoria();
       },
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: Color.fromARGB(255, 207, 171, 137),
-          image: DecorationImage(image: NetworkImage(categoria.imagemUrl ?? '-'), fit: BoxFit.cover, opacity: 0.8),
+          image: DecorationImage(image: NetworkImage(categoria.imagemUrl ?? '-'), fit: BoxFit.cover, opacity: 0.9),
         ),
         child: Container(
           decoration: BoxDecoration(color: Colors.black26, borderRadius: BorderRadius.circular(20)),
-          padding: EdgeInsets.only(left: 10, top: 10),
+          padding: EdgeInsets.only(left: 10, top: 10, right: 10),
           child: Text(
-            categoria.titulo ?? '-',
+            widget.categoria.titulo ?? '-',
             style: TextStyle(fontWeight: FontWeight.w900, fontSize: 18, color: Colors.white),
           ),
         ),
@@ -32,13 +42,7 @@ class ItemCategoria extends StatelessWidget {
     );
   }
 
-  void selecionarCategoria(BuildContext context) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (_) {
-          return RefeicoesCategoriaPage(categoria: categoria);
-        },
-      ),
-    );
+  void selecionarCategoria() {
+    Modular.to.pushNamed(routeRefeicaoCategoria, arguments: categoria);
   }
 }

@@ -1,11 +1,11 @@
-class CategotiaModel {
+class CategoriaModel {
   String? titulo;
   String? descricao;
   String? imagemUrl;
 
-  CategotiaModel({this.titulo, this.descricao, this.imagemUrl});
+  CategoriaModel({this.titulo, this.descricao, this.imagemUrl});
 
-  CategotiaModel.fromJson(Map<String, dynamic> json) {
+  CategoriaModel.fromJson(Map<String, dynamic> json) {
     titulo = json['titulo'];
     descricao = json['descricao'];
     imagemUrl = json['imagemUrl'];

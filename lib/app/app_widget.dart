@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Theme;
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import 'config/theme/settings_theme.dart';
+import 'config/theme/theme.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({super.key});
@@ -11,7 +11,7 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Receitas',
-      theme: SettingsTheme.theme,
+      theme: Theme.light,
       debugShowCheckedModeBanner: false,
       routerConfig: Modular.routerConfig,
       localizationsDelegates: const [

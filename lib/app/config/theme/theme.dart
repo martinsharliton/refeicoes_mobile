@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-import 'app_styles.dart';
-import 'colors_app.dart';
-import 'text_styles.dart';
+import 'ui/app_styles.dart';
+import 'ui/colors_app.dart';
+import 'ui/text_styles.dart';
 
-class SettingsTheme {
-  SettingsTheme._();
+class Theme {
+  Theme._();
 
   static final colors = ColorsApp.instance;
   static final textStyles = TextStyles.instance;
 
-  static final theme = ThemeData(
+  static final light = ThemeData(
     scaffoldBackgroundColor: Colors.grey[200],
     colorScheme: ColorScheme.fromSeed(seedColor: colors.primary, surfaceTint: Colors.transparent),
     splashColor: Colors.transparent,
@@ -19,7 +19,7 @@ class SettingsTheme {
     appBarTheme: AppBarTheme(
       backgroundColor: colors.primary,
       elevation: 0,
-      iconTheme: IconThemeData(color: colors.secondary),
+      iconTheme: IconThemeData(color: Colors.white),
       titleTextStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22, fontFamily: 'SFProDisplay'),
       centerTitle: true,
     ),
