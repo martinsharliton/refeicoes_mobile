@@ -16,7 +16,16 @@ class AppStyles {
     backgroundColor: Colors.grey,
     textStyle: TextStyles.instance.textTitleItemList.copyWith(color: Colors.white),
     foregroundColor: Colors.white,
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+  );
+
+  ButtonStyle get primaryOutlinedButton => OutlinedButton.styleFrom(
+    foregroundColor: Colors.white,
+    iconColor: ColorsApp.instance.primary,
+    textStyle: TextStyles.instance.textTitleItemList.copyWith(color: Colors.white),
+    side: const BorderSide(color: Colors.grey, width: 1),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+    backgroundColor: Colors.transparent,
   );
 
   ButtonStyle get secondaryButton {

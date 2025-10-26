@@ -45,7 +45,7 @@ class _AdicionarCategoriaDialogState extends State<AdicionarCategoriaDialog> {
     return AlertDialog(
       title: const Text('Nova Categoria', textAlign: TextAlign.center),
       content: SizedBox(
-        width: MediaQuery.of(context).size.width * 0.8,
+        width: MediaQuery.of(context).size.width,
         child: Form(
           key: formKey,
           child: Observer(
@@ -79,7 +79,7 @@ class _AdicionarCategoriaDialogState extends State<AdicionarCategoriaDialog> {
 
                 if (imagemError)
                   Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
+                    padding: const EdgeInsets.only(top: 8.0, left: 5),
                     child: Text(
                       'Por favor, selecione uma imagem',
                       style: TextStyle(color: Theme.of(context).colorScheme.error, fontSize: 12),
@@ -112,6 +112,8 @@ class _AdicionarCategoriaDialogState extends State<AdicionarCategoriaDialog> {
         TextButton(
           onPressed: () {
             Modular.to.pop();
+            controller.setImage(null);
+            controller.setImageError(false);
           },
           child: const Text('Cancelar'),
         ),

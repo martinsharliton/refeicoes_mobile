@@ -20,13 +20,23 @@ class Theme {
       backgroundColor: colors.primary,
       elevation: 0,
       iconTheme: IconThemeData(color: Colors.white),
-      titleTextStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22, fontFamily: 'SFProDisplay'),
+      titleTextStyle: TextStyle(
+        color: Colors.white,
+        fontWeight: FontWeight.bold,
+        fontSize: 22,
+        fontFamily: 'SFProDisplay',
+      ),
       centerTitle: true,
     ),
     textTheme: const TextTheme(
       bodyLarge: TextStyle(fontFamily: 'SFProDisplay', fontSize: 15, color: Colors.black87),
       bodyMedium: TextStyle(fontFamily: 'SFProDisplay', fontSize: 17, color: Colors.black87),
-      titleLarge: TextStyle(fontFamily: 'SFProDisplay', fontWeight: FontWeight.bold, fontSize: 21, color: Colors.black87),
+      titleLarge: TextStyle(
+        fontFamily: 'SFProDisplay',
+        fontWeight: FontWeight.bold,
+        fontSize: 21,
+        color: Colors.black87,
+      ),
     ),
     progressIndicatorTheme: ProgressIndicatorThemeData(
       color: colors.secondary,
@@ -37,16 +47,17 @@ class Theme {
     dialogTheme: DialogThemeData(
       insetPadding: EdgeInsets.all(10),
       backgroundColor: Colors.white,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(22.5)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
       titleTextStyle: TextStyles.instance.textTitle.copyWith(fontSize: 21),
     ),
     bottomSheetTheme: BottomSheetThemeData(
       showDragHandle: true,
       backgroundColor: Colors.white,
-      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(22.5))),
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(25))),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(style: AppStyles.instance.secondaryButton),
     textButtonTheme: TextButtonThemeData(style: AppStyles.instance.textButton),
+    outlinedButtonTheme: OutlinedButtonThemeData(style: AppStyles.instance.primaryOutlinedButton),
     inputDecorationTheme: InputDecorationTheme(
       activeIndicatorBorder: BorderSide(color: Colors.grey[400]!),
       fillColor: Colors.white,

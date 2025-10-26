@@ -3,6 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../app_module.dart';
 import '../../../models/categoria/categoria_response_dto.dart';
+import 'opcoes_categoria_bootom_sheet.dart';
 
 class ItemCategoria extends StatefulWidget {
   final CategoriaResponseDTO categoria;
@@ -20,10 +21,13 @@ class _ItemCategoriaState extends State<ItemCategoria> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        selecionarCategoria();
+        abrirTelaRefeicaoCategoria();
       },
       onDoubleTap: () {
-        selecionarCategoria();
+        abrirOpcoesCategoriaBootomSheet();
+      },
+      onLongPress: () {
+        abrirOpcoesCategoriaBootomSheet();
       },
       child: Container(
         decoration: BoxDecoration(
@@ -42,7 +46,16 @@ class _ItemCategoriaState extends State<ItemCategoria> {
     );
   }
 
-  void selecionarCategoria() {
+  void abrirTelaRefeicaoCategoria() {
     Modular.to.pushNamed(routeRefeicaoCategoria, arguments: categoria);
+  }
+
+  void abrirOpcoesCategoriaBootomSheet() async {
+    return showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return OpcoesCategoriaBootomSheet(categoria: categoria);
+      },
+    );
   }
 }

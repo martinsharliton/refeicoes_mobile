@@ -14,12 +14,13 @@ class TextStyles {
   TextStyle get textLight => const TextStyle(fontWeight: FontWeight.w300, fontFamily: 'SFProDisplay');
   TextStyle get textRegular => const TextStyle(fontWeight: FontWeight.normal, fontFamily: 'SFProDisplay');
 
-  TextStyle get textMedium => const TextStyle(fontWeight: FontWeight.w500, fontFamily: 'SFProDisplay', fontSize: 20, color: Colors.black);
+  TextStyle get textMedium =>
+      const TextStyle(fontWeight: FontWeight.w500, fontFamily: 'SFProDisplay', fontSize: 20, color: Colors.black);
 
   TextStyle get textSemiBold => const TextStyle(fontWeight: FontWeight.w600, fontFamily: 'SFProDisplay');
 
   TextStyle get textBold => const TextStyle(fontWeight: FontWeight.bold, fontFamily: 'SFProDisplay');
-  
+
   TextStyle get textExtraBold => const TextStyle(fontWeight: FontWeight.w800, fontFamily: 'SFProDisplay');
 
   TextStyle get textButtonLabel => textMedium.copyWith(fontSize: 19, color: Colors.white);
@@ -30,9 +31,9 @@ class TextStyles {
 
   TextStyle get textTitle => textBold.copyWith(fontSize: 29, color: Colors.black);
 
-  TextStyle get textTitleItemList => textMedium.copyWith(fontSize: 17, color: Colors.black);
+  TextStyle get textTitleItemList => textMedium.copyWith(fontSize: 18, color: Colors.black);
 
-  TextStyle get textSubTitleItemList => textRegular.copyWith(fontSize: 15, color: Colors.black54);
+  TextStyle get textSubTitleItemList => textRegular.copyWith(fontSize: 16, color: Colors.black54);
 }
 
 extension TextStylesExtension on BuildContext {
