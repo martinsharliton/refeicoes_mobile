@@ -72,6 +72,24 @@ abstract class CategoriaControllerBase with Store {
   }
 
   @action
+  Future<void> removerCategoriaPorId({required CategoriaResponseDTO categoria}) async {
+    _errorMessage = null;
+    _successMessage = null;
+
+    await handleApiCall(
+      categoriaRepository.deleteCategoriaById(idCategoria: categoria.id ?? 0),
+      onSuccess: (result) async {
+        _listCategorias.removeWhere((element) => element.id == categoria.id);
+        _status = PageStatus.loaded;
+      },
+      onError: (message) {
+        _errorMessage = message;
+        _status = PageStatus.error;
+      },
+    );
+  }
+
+  @action
   void setImage(String? image) {
     _imagemSelecionada = image;
   }

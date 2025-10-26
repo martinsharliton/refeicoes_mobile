@@ -1,26 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../../app_module.dart';
 import '../../../config/theme/ui/colors_app.dart';
 import '../../../config/theme/ui/text_styles.dart';
 import '../../../models/categoria/categoria_response_dto.dart';
+import '../categoria_controller.dart';
 
 class OpcoesCategoriaBootomSheet extends StatefulWidget {
+  final CategoriaController controller;
   final CategoriaResponseDTO categoria;
 
-  const OpcoesCategoriaBootomSheet({super.key, required this.categoria});
+  const OpcoesCategoriaBootomSheet({super.key, required this.categoria, required this.controller});
 
   @override
   State<OpcoesCategoriaBootomSheet> createState() => _OpcoesCategoriaBootomSheetState();
 }
 
 class _OpcoesCategoriaBootomSheetState extends State<OpcoesCategoriaBootomSheet> {
+  CategoriaController get controller => widget.controller;
   CategoriaResponseDTO get categoria => widget.categoria;
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(12),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -64,15 +69,41 @@ class _OpcoesCategoriaBootomSheetState extends State<OpcoesCategoriaBootomSheet>
                 style: context.textStyles.textTitleItemList.copyWith(fontSize: 20, fontWeight: FontWeight.w700),
               ),
               subtitle: Text(
+                textAlign: TextAlign.justify,
                 categoria.descricao ?? '',
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
                 style: context.textStyles.textSubTitleItemList.copyWith(fontWeight: FontWeight.w500),
               ),
             ),
             Divider(),
             SizedBox(height: 10),
             Row(
-              spacing: 5,
+              spacing: 10,
               children: [
+                Expanded(
+                  child: SizedBox(
+                    height: 55,
+                    child: ElevatedButton.icon(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: context.colors.secondary,
+                        foregroundColor: Colors.white,
+                      ),
+                      icon: Icon(Icons.open_in_new),
+                      label: Text(
+                        'Entrar',
+                        style: context.textStyles.textTitleItemList.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      onPressed: () {
+                        Modular.to.pop();
+                        Modular.to.pushNamed(routeRefeicaoCategoria, arguments: categoria);
+                      },
+                    ),
+                  ),
+                ),
                 Expanded(
                   child: SizedBox(
                     height: 55,
@@ -89,7 +120,9 @@ class _OpcoesCategoriaBootomSheetState extends State<OpcoesCategoriaBootomSheet>
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Modular.to.pop();
+                      },
                     ),
                   ),
                 ),
@@ -97,7 +130,10 @@ class _OpcoesCategoriaBootomSheetState extends State<OpcoesCategoriaBootomSheet>
                   child: SizedBox(
                     height: 55,
                     child: ElevatedButton.icon(
-                      style: ElevatedButton.styleFrom(backgroundColor: Colors.red, foregroundColor: Colors.white),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red.shade600,
+                        foregroundColor: Colors.white,
+                      ),
                       icon: Icon(Icons.delete),
                       label: Text(
                         'Deletar',
@@ -106,7 +142,10 @@ class _OpcoesCategoriaBootomSheetState extends State<OpcoesCategoriaBootomSheet>
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () async {
+                        Modular.to.pop();
+                        //await controller.removerCategoriaPorId(categoria: categoria);
+                      },
                     ),
                   ),
                 ),

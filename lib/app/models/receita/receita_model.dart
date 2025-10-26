@@ -1,5 +1,4 @@
-class ReceitaResponseDTO {
-  int? id;
+class ReceitaModel {
   String? titulo;
   String? descricao;
   String? imagemUrl;
@@ -8,8 +7,7 @@ class ReceitaResponseDTO {
   List<String>? ingredientes;
   List<String>? passos;
 
-  ReceitaResponseDTO({
-    this.id,
+  ReceitaModel({
     this.titulo,
     this.descricao,
     this.imagemUrl,
@@ -19,8 +17,7 @@ class ReceitaResponseDTO {
     this.passos,
   });
 
-  ReceitaResponseDTO.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+  ReceitaModel.fromJson(Map<String, dynamic> json) {
     titulo = json['titulo'];
     descricao = json['descricao'];
     imagemUrl = json['imagemUrl'];
@@ -32,7 +29,6 @@ class ReceitaResponseDTO {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
     data['titulo'] = titulo;
     data['descricao'] = descricao;
     data['imagemUrl'] = imagemUrl;

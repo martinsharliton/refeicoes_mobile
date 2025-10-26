@@ -3,18 +3,21 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../app_module.dart';
 import '../../../models/categoria/categoria_response_dto.dart';
+import '../categoria_controller.dart';
 import 'opcoes_categoria_bootom_sheet.dart';
 
 class ItemCategoria extends StatefulWidget {
+  final CategoriaController controller;
   final CategoriaResponseDTO categoria;
 
-  const ItemCategoria({required this.categoria, super.key});
+  const ItemCategoria({required this.categoria, super.key, required this.controller});
 
   @override
   State<ItemCategoria> createState() => _ItemCategoriaState();
 }
 
 class _ItemCategoriaState extends State<ItemCategoria> {
+  CategoriaController get controller => widget.controller;
   CategoriaResponseDTO get categoria => widget.categoria;
 
   @override
@@ -54,7 +57,7 @@ class _ItemCategoriaState extends State<ItemCategoria> {
     return showModalBottomSheet(
       context: context,
       builder: (context) {
-        return OpcoesCategoriaBootomSheet(categoria: categoria);
+        return OpcoesCategoriaBootomSheet(categoria: categoria, controller: controller);
       },
     );
   }

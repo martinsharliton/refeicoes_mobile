@@ -153,6 +153,20 @@ mixin _$CategoriaController on CategoriaControllerBase, Store {
     );
   }
 
+  late final _$removerCategoriaPorIdAsyncAction = AsyncAction(
+    'CategoriaControllerBase.removerCategoriaPorId',
+    context: context,
+  );
+
+  @override
+  Future<void> removerCategoriaPorId({
+    required CategoriaResponseDTO categoria,
+  }) {
+    return _$removerCategoriaPorIdAsyncAction.run(
+      () => super.removerCategoriaPorId(categoria: categoria),
+    );
+  }
+
   late final _$CategoriaControllerBaseActionController = ActionController(
     name: 'CategoriaControllerBase',
     context: context,

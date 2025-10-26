@@ -1,5 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../repository/refeicao_categoria/refeicao_categoria_repository.dart';
+import '../../repository/refeicao_categoria/refeicao_categoria_repository_impl.dart';
 import '../core/core_module.dart';
 import 'refeicoes_categoria_controller.dart';
 import 'refeicoes_categoria_page.dart';
@@ -10,6 +12,7 @@ class RefeicoesCategoriaModule extends Module {
 
   @override
   void binds(i) {
+    i.addSingleton<RefeicaoCategoriaRepository>(RefeicaoCategoriaRepositoryImpl.new);
     i.addSingleton(RefeicoesCategoriaController.new);
   }
 

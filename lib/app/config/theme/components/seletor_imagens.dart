@@ -19,16 +19,10 @@ class _SeletorImagensState extends State<SeletorImagens> {
         child: Column(
           spacing: 13,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                'Selecione uma Imagem',
-                style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20),
-              ),
-            ),
+            Text('Selecione uma Imagem', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20)),
             Flexible(
               child: GridView.builder(
-                padding: const EdgeInsets.all(10),
+                padding: const EdgeInsets.all(8),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
                   crossAxisSpacing: 8,

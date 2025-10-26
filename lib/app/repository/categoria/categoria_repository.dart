@@ -7,4 +7,5 @@ import '../../models/categoria/categoria_response_dto.dart';
 abstract class CategoriaRepository {
   Future<Result<List<CategoriaResponseDTO>, Failure>> findAll();
   Future<Result<CategoriaResponseDTO, Failure>> createCategoria({required CategoriaModel categoria});
+  Future<Result<bool, Failure>> deleteCategoriaById({required int idCategoria});
 }

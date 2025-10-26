@@ -44,4 +44,19 @@ class CategoriaRepositoryImpl implements CategoriaRepository {
       return Error(DioFailure(message: 'Erro ao adicionar categoria'));
     }
   }
+
+  @override
+  Future<Result<bool, Failure>> deleteCategoriaById({required int idCategoria}) async {
+    try {
+      final response = await client.delete('categorias/$idCategoria');
+
+      if (response.statusCode == 204) {
+        return Success(true);
+      }
+
+      return Error(DioFailure(message: 'Erro ao remover categoria: $idCategoria'));
+    } on DioException catch (_) {
+      return Error(DioFailure(message: 'Erro ao remover categoria: $idCategoria'));
+    }
+  }
 }

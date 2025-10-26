@@ -24,12 +24,9 @@ class _CategoriaPageState extends State<CategoriaPage> with Loader, Messages {
 
   @override
   void initState() {
-    _initializeVariables();
     WidgetsBinding.instance.addPostFrameCallback((_) => _setupReactions());
     super.initState();
   }
-
-  void _initializeVariables() {}
 
   Future<void> _setupReactions() async {
     _disposers = [
@@ -75,28 +72,6 @@ class _CategoriaPageState extends State<CategoriaPage> with Loader, Messages {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Minhas Receitas')),
-      drawer: Drawer(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            AppBar(title: const Text('Navegação'), automaticallyImplyLeading: false, backgroundColor: Colors.black87),
-            ListTile(
-              leading: const Icon(Icons.restaurant),
-              title: const Text('Categorias'),
-              onTap: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.settings),
-              title: const Text('Configurações'),
-              onTap: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        ),
-      ),
       body: Observer(
         builder: (_) {
           if (controller.listCategorias.isEmpty) {
@@ -118,7 +93,7 @@ class _CategoriaPageState extends State<CategoriaPage> with Loader, Messages {
               mainAxisSpacing: 15,
             ),
             children: controller.listCategorias.map((categoria) {
-              return ItemCategoria(categoria: categoria);
+              return ItemCategoria(categoria: categoria, controller: controller);
             }).toList(),
           );
         },

@@ -5,14 +5,13 @@ import 'components/item_receita_refeicao.dart';
 
 class ReceitasRefeicoesPage extends StatelessWidget {
   final ReceitaResponseDTO receita;
-  final Color cor;
 
-  const ReceitasRefeicoesPage({super.key, required this.receita, required this.cor});
+  const ReceitasRefeicoesPage({super.key, required this.receita});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(receita.titulo ?? '-'), backgroundColor: cor),
+      appBar: AppBar(title: Text(receita.titulo ?? '-')),
       body: ListView(
         children: [
           Stack(
@@ -50,7 +49,7 @@ class ReceitasRefeicoesPage extends StatelessWidget {
                 );
               }
 
-              return ItemReceitaRefeicao(titulo: 'Ingredientes', itens: receita.ingredientes ?? [], cor: cor);
+              return ItemReceitaRefeicao(titulo: 'Ingredientes', itens: receita.ingredientes ?? []);
             },
           ),
 
@@ -63,7 +62,7 @@ class ReceitasRefeicoesPage extends StatelessWidget {
                 );
               }
 
-              return ItemReceitaRefeicao(titulo: 'Passos', itens: receita.passos ?? [], cor: cor);
+              return ItemReceitaRefeicao(titulo: 'Passos', itens: receita.passos ?? []);
             },
           ),
         ],

@@ -43,7 +43,7 @@ class _AdicionarCategoriaDialogState extends State<AdicionarCategoriaDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('Nova Categoria', textAlign: TextAlign.center),
+      title: const Text('Nova Categoria'),
       content: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Form(

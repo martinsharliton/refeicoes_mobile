@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 
+import '../../../config/theme/ui/colors_app.dart';
+
 class ItemReceitaRefeicao extends StatelessWidget {
   final List<String> itens;
   final String titulo;
-  final Color cor;
 
-  const ItemReceitaRefeicao({super.key, required this.itens, required this.titulo, required this.cor});
+  const ItemReceitaRefeicao({super.key, required this.itens, required this.titulo});
 
   @override
   Widget build(BuildContext context) {
+    final cor = context.colors.primary;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12.0),
       child: Column(
@@ -66,7 +69,12 @@ class ItemReceitaRefeicao extends StatelessWidget {
                           ),
                           title: Text(
                             item,
-                            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500, height: 1.4, color: Colors.black87),
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              height: 1.4,
+                              color: Colors.black87,
+                            ),
                           ),
                           trailing: Icon(Icons.chevron_right_rounded, color: Colors.grey.shade400, size: 20),
                         ),
