@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -6,6 +8,7 @@ import '../../../config/theme/ui/colors_app.dart';
 import '../../../config/theme/ui/text_styles.dart';
 import '../../../models/receita/receita_response_dto.dart';
 import '../refeicoes_categoria_controller.dart';
+import 'remover_refeicao_dialog.dart';
 
 class OpcoesRefeicaoBootomSheet extends StatefulWidget {
   final RefeicoesCategoriaController controller;
@@ -20,6 +23,14 @@ class OpcoesRefeicaoBootomSheet extends StatefulWidget {
 class _OpcoesRefeicaoBootomSheetState extends State<OpcoesRefeicaoBootomSheet> {
   RefeicoesCategoriaController get controller => widget.controller;
   ReceitaResponseDTO get receita => widget.receita;
+
+  @override
+  void initState() {
+    controller.idRefeicao = receita.id;
+
+    log('idRefeicao ${controller.idRefeicao ?? 0}');
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -143,7 +154,14 @@ class _OpcoesRefeicaoBootomSheetState extends State<OpcoesRefeicaoBootomSheet> {
                         ),
                       ),
                       onPressed: () async {
-                        // Modular.to.pop();
+                        Modular.to.pop();
+
+                        return showDialog(
+                          context: context,
+                          builder: (context) {
+                            return RemoverRefeicaoDialog(receita: receita, controller: controller);
+                          },
+                        );
                       },
                     ),
                   ),

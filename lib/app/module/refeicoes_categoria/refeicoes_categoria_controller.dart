@@ -16,6 +16,8 @@ abstract class RefeicoesCategoriaControllerBase with Store {
 
   int? idCategoria;
 
+  int? idRefeicao;
+
   @readonly
   var _listReceitas = ObservableList<ReceitaResponseDTO>();
 
@@ -61,12 +63,31 @@ abstract class RefeicoesCategoriaControllerBase with Store {
   Future<void> carregarReceitas() async {
     _errorMessage = null;
     _successMessage = null;
+    _status = PageStatus.loading;
 
     await handleApiCall(
       receitaRepository.findAll(idCategoria: idCategoria ?? 0),
       onSuccess: (result) async {
         _listReceitas.clear();
         _listReceitas.addAll(result);
+        _status = PageStatus.loaded;
+      },
+      onError: (message) {
+        _errorMessage = message;
+        _status = PageStatus.error;
+      },
+    );
+  }
+
+  @action
+  Future<void> removerRefeicao() async {
+    _errorMessage = null;
+    _successMessage = null;
+
+    await handleApiCall(
+      receitaRepository.deleteRefeicao(idRefeicao: idRefeicao ?? 0),
+      onSuccess: (result) async {
+        _listReceitas.removeWhere((element) => element.id == idRefeicao);
         _status = PageStatus.loaded;
       },
       onError: (message) {

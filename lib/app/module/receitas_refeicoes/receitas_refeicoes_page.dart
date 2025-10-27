@@ -3,10 +3,17 @@ import 'package:flutter/material.dart';
 import '../../models/receita/receita_response_dto.dart';
 import 'components/item_receita_refeicao.dart';
 
-class ReceitasRefeicoesPage extends StatelessWidget {
+class ReceitasRefeicoesPage extends StatefulWidget {
   final ReceitaResponseDTO receita;
 
   const ReceitasRefeicoesPage({super.key, required this.receita});
+
+  @override
+  State<ReceitasRefeicoesPage> createState() => _ReceitasRefeicoesPageState();
+}
+
+class _ReceitasRefeicoesPageState extends State<ReceitasRefeicoesPage> {
+  ReceitaResponseDTO get receita => widget.receita;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +50,7 @@ class ReceitasRefeicoesPage extends StatelessWidget {
           ),
           Builder(
             builder: (context) {
-              if ((receita.ingredientes?.isEmpty ?? true) && (receita.passos?.isEmpty ?? true)) {
+              if ((widget.receita.ingredientes?.isEmpty ?? true) && (widget.receita.passos?.isEmpty ?? true)) {
                 return Center(
                   child: const Padding(
                     padding: EdgeInsets.all(10),
@@ -67,12 +74,6 @@ class ReceitasRefeicoesPage extends StatelessWidget {
             },
           ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Adicionar nova categoria
-        },
-        child: const Icon(Icons.favorite_border),
       ),
     );
   }

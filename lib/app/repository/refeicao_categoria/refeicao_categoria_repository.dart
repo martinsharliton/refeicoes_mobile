@@ -7,4 +7,5 @@ import '../../models/receita/receita_response_dto.dart';
 abstract class RefeicaoCategoriaRepository {
   Future<Result<List<ReceitaResponseDTO>, Failure>> findAll({required int idCategoria});
   Future<Result<ReceitaResponseDTO, Failure>> createReceita({required ReceitaModel receita, required int idCategoria});
+  Future<Result<bool, Failure>> deleteRefeicao({required int idRefeicao});
 }

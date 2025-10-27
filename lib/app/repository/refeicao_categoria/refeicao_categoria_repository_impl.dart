@@ -22,7 +22,7 @@ class RefeicaoCategoriaRepositoryImpl implements RefeicaoCategoriaRepository {
         return Success(result);
       }
 
-      return Error(DioFailure(message: 'Erro ao carregar receitas'));
+      return Error(DioFailure(message: response.data['message'] as String));
     } on DioException catch (_) {
       return Error(DioFailure(message: 'Erro ao carregar receitas'));
     }
@@ -41,9 +41,24 @@ class RefeicaoCategoriaRepositoryImpl implements RefeicaoCategoriaRepository {
         return Success(result);
       }
 
-      return Error(DioFailure(message: 'Erro ao adicionar uma receita'));
+      return Error(DioFailure(message: response.data['message'] as String));
     } on DioException catch (_) {
       return Error(DioFailure(message: 'Erro ao adicionar uma receita'));
+    }
+  }
+
+  @override
+  Future<Result<bool, Failure>> deleteRefeicao({required int idRefeicao}) async {
+    try {
+      final response = await client.delete('receitas/$idRefeicao');
+
+      if (response.statusCode == 204) {
+        return Success(true);
+      }
+
+      return Error(DioFailure(message: response.data['message'] as String));
+    } on DioException catch (_) {
+      return Error(DioFailure(message: 'Erro ao carregar receitas'));
     }
   }
 }
