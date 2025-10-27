@@ -74,7 +74,7 @@ class _CategoriaPageState extends State<CategoriaPage> with Loader, Messages {
       appBar: AppBar(title: Text('Minhas Receitas')),
       body: Observer(
         builder: (_) {
-          if (controller.listCategorias.isEmpty) {
+          if (controller.listCategorias.isEmpty && controller.status == PageStatus.loaded) {
             return RefreshDataPage(
               onPressed: () {
                 controller.loadingListCategorias();
@@ -85,7 +85,7 @@ class _CategoriaPageState extends State<CategoriaPage> with Loader, Messages {
           }
 
           return GridView(
-            padding: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 50),
+            padding: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 100),
             gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
               maxCrossAxisExtent: 200,
               childAspectRatio: 1.5,
@@ -99,6 +99,7 @@ class _CategoriaPageState extends State<CategoriaPage> with Loader, Messages {
         },
       ),
       floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
         onPressed: () {
           showDialog(
             barrierDismissible: false,
@@ -108,9 +109,6 @@ class _CategoriaPageState extends State<CategoriaPage> with Loader, Messages {
             },
           );
         },
-        foregroundColor: Colors.white,
-        backgroundColor: Colors.blueGrey,
-        child: const Icon(Icons.add),
       ),
     );
   }

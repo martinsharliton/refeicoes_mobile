@@ -90,6 +90,28 @@ mixin _$RefeicoesCategoriaController
     });
   }
 
+  late final _$criarNovaReceitaAsyncAction = AsyncAction(
+    'RefeicoesCategoriaControllerBase.criarNovaReceita',
+    context: context,
+  );
+
+  @override
+  Future<void> criarNovaReceita({required ReceitaModel receita}) {
+    return _$criarNovaReceitaAsyncAction.run(
+      () => super.criarNovaReceita(receita: receita),
+    );
+  }
+
+  late final _$carregarReceitasAsyncAction = AsyncAction(
+    'RefeicoesCategoriaControllerBase.carregarReceitas',
+    context: context,
+  );
+
+  @override
+  Future<void> carregarReceitas() {
+    return _$carregarReceitasAsyncAction.run(() => super.carregarReceitas());
+  }
+
   @override
   String toString() {
     return '''

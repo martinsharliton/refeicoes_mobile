@@ -4,6 +4,7 @@ class Imagens {
 }
 
 final List<Imagens> listaDeImagens = [
+  // --- Lista Original ---
   Imagens(
     'https://www.falcortravels.com/wp-content/uploads/2017/06/os_principais_pratos_tipicos_italianos_10-1024x682.jpg',
   ),
@@ -37,4 +38,13 @@ final List<Imagens> listaDeImagens = [
   Imagens('https://images.unsplash.com/photo-1544145945-f90425340c7e?w=849&h=477&crop=0'),
   Imagens('https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=849&h=477&crop=0'),
   Imagens('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=849&h=477&crop=0'),
+
+  // --- Novas Imagens Adicionadas ---
+  Imagens('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=849&h=477&crop=0'),
+  Imagens('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=849&h=477&crop=0'),
+  Imagens('https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=849&h=477&crop=0'),
+  Imagens('https://images.unsplash.com/photo-1529042410759-befb1204b468?w=849&h=477&crop=0'),
+  Imagens('https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=849&h=477&crop=0'),
+  Imagens('https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?w=849&h=477&crop=0'),
+  Imagens('https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=849&h=477&crop=0'),
 ];

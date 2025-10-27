@@ -13,6 +13,8 @@ class RefeicoesCategoriaController = RefeicoesCategoriaControllerBase with _$Ref
 abstract class RefeicoesCategoriaControllerBase with Store {
   final RefeicaoCategoriaRepository receitaRepository;
 
+  int? idCategoria;
+
   @readonly
   var _listReceitas = ObservableList<ReceitaResponseDTO>();
 
@@ -36,6 +38,24 @@ abstract class RefeicoesCategoriaControllerBase with Store {
       receitaRepository.createReceita(idCategoria: 0, receita: receita),
       onSuccess: (result) async {
         _listReceitas.add(result);
+        _status = PageStatus.loaded;
+      },
+      onError: (message) {
+        _errorMessage = message;
+        _status = PageStatus.error;
+      },
+    );
+  }
+
+  @action
+  Future<void> carregarReceitas() async {
+    _errorMessage = null;
+    _successMessage = null;
+
+    await handleApiCall(
+      receitaRepository.findAll(idCategoria: idCategoria ?? 0),
+      onSuccess: (result) async {
+        _listReceitas.addAll(result);
         _status = PageStatus.loaded;
       },
       onError: (message) {

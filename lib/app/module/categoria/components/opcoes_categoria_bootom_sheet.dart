@@ -6,6 +6,7 @@ import '../../../config/theme/ui/colors_app.dart';
 import '../../../config/theme/ui/text_styles.dart';
 import '../../../models/categoria/categoria_response_dto.dart';
 import '../categoria_controller.dart';
+import 'remover_categoria_dialog.dart';
 
 class OpcoesCategoriaBootomSheet extends StatefulWidget {
   final CategoriaController controller;
@@ -144,7 +145,13 @@ class _OpcoesCategoriaBootomSheetState extends State<OpcoesCategoriaBootomSheet>
                       ),
                       onPressed: () async {
                         Modular.to.pop();
-                        //await controller.removerCategoriaPorId(categoria: categoria);
+
+                        return showDialog(
+                          context: context,
+                          builder: (context) {
+                            return RemoverCategoriaDialog(categoria: categoria, controller: controller);
+                          },
+                        );
                       },
                     ),
                   ),

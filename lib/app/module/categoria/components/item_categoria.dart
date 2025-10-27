@@ -29,13 +29,10 @@ class _ItemCategoriaState extends State<ItemCategoria> {
       onDoubleTap: () {
         abrirOpcoesCategoriaBootomSheet();
       },
-      onLongPress: () {
-        abrirOpcoesCategoriaBootomSheet();
-      },
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          image: DecorationImage(image: NetworkImage(categoria.imagemUrl ?? '-'), fit: BoxFit.cover, opacity: 0.9),
+          image: DecorationImage(image: NetworkImage(categoria.imagemUrl ?? '-'), fit: BoxFit.cover),
         ),
         child: Container(
           decoration: BoxDecoration(color: Colors.black26, borderRadius: BorderRadius.circular(20)),
@@ -49,8 +46,9 @@ class _ItemCategoriaState extends State<ItemCategoria> {
     );
   }
 
-  void abrirTelaRefeicaoCategoria() {
-    Modular.to.pushNamed(routeRefeicaoCategoria, arguments: categoria);
+  Future<void> abrirTelaRefeicaoCategoria() async {
+    await Modular.to.pushNamed(routeRefeicaoCategoria, arguments: categoria);
+    await controller.loadingListCategorias();
   }
 
   void abrirOpcoesCategoriaBootomSheet() async {

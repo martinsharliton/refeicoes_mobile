@@ -17,7 +17,7 @@ class Theme {
     fontFamily: 'SFProDisplay',
     highlightColor: Colors.transparent,
     appBarTheme: AppBarTheme(
-      backgroundColor: colors.primary,
+      backgroundColor: colors.secondary,
       elevation: 0,
       iconTheme: IconThemeData(color: Colors.white),
       titleTextStyle: TextStyle(
@@ -70,6 +70,10 @@ class Theme {
       focusedErrorBorder: _defaultInputBorder.copyWith(borderSide: BorderSide(color: Colors.red.shade700)),
       labelStyle: textStyles.textRegular.copyWith(color: Colors.grey),
       errorStyle: textStyles.textRegular.copyWith(color: Colors.red.shade700),
+    ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: colors.secondary,
+      foregroundColor: Colors.white,
     ),
     dividerTheme: DividerThemeData(thickness: .8),
   );

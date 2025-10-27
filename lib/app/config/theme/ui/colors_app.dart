@@ -10,7 +10,7 @@ class ColorsApp {
   }
 
   Color get primary => Colors.blueGrey;
-  Color get secondary => Colors.blue;
+  Color get secondary => Colors.teal;
   Color get terciary => const Color(0xFF485d92);
 }
 

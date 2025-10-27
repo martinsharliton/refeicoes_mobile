@@ -71,8 +71,6 @@ class ReceitasRefeicoesPage extends StatelessWidget {
         onPressed: () {
           // Adicionar nova categoria
         },
-        foregroundColor: Colors.white,
-        backgroundColor: Color.fromARGB(255, 207, 171, 137),
         child: const Icon(Icons.favorite_border),
       ),
     );

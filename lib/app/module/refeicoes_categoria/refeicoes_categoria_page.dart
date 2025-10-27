@@ -30,6 +30,8 @@ class _RefeicoesCategoriaPageState extends State<RefeicoesCategoriaPage> with Lo
   }
 
   Future<void> _setupReactions() async {
+    controller.idCategoria = categoria.id;
+
     _disposers = [
       reaction((_) => controller.status, (status) {
         switch (status) {
@@ -51,7 +53,9 @@ class _RefeicoesCategoriaPageState extends State<RefeicoesCategoriaPage> with Lo
             break;
         }
       }),
-      when((_) => controller.listReceitas.isEmpty, () async {}),
+      when((_) => controller.listReceitas.isEmpty, () async {
+        await controller.carregarReceitas();
+      }),
     ];
   }
 
@@ -88,7 +92,11 @@ class _RefeicoesCategoriaPageState extends State<RefeicoesCategoriaPage> with Lo
               crossAxisAlignment: CrossAxisAlignment.start,
               spacing: 5,
               children: [
-                Text(categoria.descricao ?? '-', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                Text(
+                  categoria.descricao ?? '-',
+                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.justify,
+                ),
                 Flexible(
                   child: ListView.builder(
                     itemCount: controller.listReceitas.length,
@@ -102,6 +110,18 @@ class _RefeicoesCategoriaPageState extends State<RefeicoesCategoriaPage> with Lo
             );
           },
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () {
+          showDialog(
+            barrierDismissible: false,
+            context: context,
+            builder: (context) {
+              return Container();
+            },
+          );
+        },
       ),
     );
   }

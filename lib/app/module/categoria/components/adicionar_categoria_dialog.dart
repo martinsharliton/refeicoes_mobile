@@ -62,9 +62,10 @@ class _AdicionarCategoriaDialogState extends State<AdicionarCategoriaDialog> {
                 const SizedBox(height: 12),
 
                 TextFormField(
+                  maxLines: 3,
                   controller: descricaoTEC,
                   onTapOutside: (event) => FocusScope.of(context).unfocus(),
-                  decoration: const InputDecoration(labelText: 'Descrição da Categoria'),
+                  decoration: const InputDecoration(labelText: 'Descrição da Categoria', alignLabelWithHint: true),
                   validator: Validatorless.required('A descrição da categoria é obrigatória'),
                 ),
 
@@ -86,21 +87,24 @@ class _AdicionarCategoriaDialogState extends State<AdicionarCategoriaDialog> {
                     ),
                   ),
 
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Padding(
-                    padding: EdgeInsets.only(top: imagemSelecionada != null ? 0 : 8.0),
-                    child: TextButton(
-                      onPressed: () async {
-                        final imageURL = await abrirSeletorDeImagens();
+                Padding(
+                  padding: const EdgeInsets.only(top: 8.0),
+                  child: Row(
+                    spacing: 5,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () async {
+                          final imageURL = await abrirSeletorDeImagens();
 
-                        if (imageURL != null) {
-                          controller.setImage(imageURL);
-                          controller.setImageError(false);
-                        }
-                      },
-                      child: Text(imagemSelecionada == null ? 'Selecionar Imagem' : 'Alterar Imagem'),
-                    ),
+                          if (imageURL != null) {
+                            controller.setImage(imageURL);
+                            controller.setImageError(false);
+                          }
+                        },
+                        child: Icon(Icons.public),
+                      ),
+                      ElevatedButton(onPressed: () async {}, child: Icon(Icons.camera_alt)),
+                    ],
                   ),
                 ),
               ],
@@ -119,26 +123,7 @@ class _AdicionarCategoriaDialogState extends State<AdicionarCategoriaDialog> {
         ),
         TextButton(
           onPressed: () async {
-            FocusScope.of(context).unfocus();
-
-            final formIsValid = formKey.currentState?.validate() ?? false;
-            final imageIsValid = controller.imagemSelecionada != null;
-
-            if (!imageIsValid) {
-              controller.setImageError(true);
-            }
-
-            if (formIsValid && imageIsValid) {
-              Modular.to.pop();
-
-              final categoria = CategoriaModel();
-              categoria.titulo = tituloTEC.text;
-              categoria.descricao = descricaoTEC.text;
-              categoria.imagemUrl = controller.imagemSelecionada;
-
-              await controller.criarNovaCategoria(categoria: categoria);
-              controller.setImage(null);
-            }
+            await salvarCategoria();
           },
           child: const Text('Criar'),
         ),
@@ -153,5 +138,28 @@ class _AdicionarCategoriaDialogState extends State<AdicionarCategoriaDialog> {
         return SeletorImagens();
       },
     );
+  }
+
+  Future<void> salvarCategoria() async {
+    FocusScope.of(context).unfocus();
+
+    final formIsValid = formKey.currentState?.validate() ?? false;
+    final imageIsValid = controller.imagemSelecionada != null;
+
+    if (!imageIsValid) {
+      controller.setImageError(true);
+    }
+
+    if (formIsValid && imageIsValid) {
+      Modular.to.pop();
+
+      final categoria = CategoriaModel();
+      categoria.titulo = tituloTEC.text;
+      categoria.descricao = descricaoTEC.text;
+      categoria.imagemUrl = controller.imagemSelecionada;
+
+      await controller.criarNovaCategoria(categoria: categoria);
+      controller.setImage(null);
+    }
   }
 }

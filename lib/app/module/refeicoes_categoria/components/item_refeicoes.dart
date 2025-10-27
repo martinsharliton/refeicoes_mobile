@@ -39,6 +39,23 @@ class _ItemRefeicoesState extends State<ItemRefeicoes> {
                 height: 180,
                 width: double.infinity,
                 fit: BoxFit.cover,
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) return child;
+
+                  return Center(
+                    child: SizedBox(
+                      width: 30,
+                      height: 30,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        valueColor: AlwaysStoppedAnimation<Color>(Colors.grey.shade600),
+                        value: loadingProgress.expectedTotalBytes != null
+                            ? loadingProgress.cumulativeBytesLoaded / (loadingProgress.expectedTotalBytes ?? 1)
+                            : null,
+                      ),
+                    ),
+                  );
+                },
                 errorBuilder: (context, error, stackTrace) {
                   return Column(
                     children: [
@@ -70,7 +87,7 @@ class _ItemRefeicoesState extends State<ItemRefeicoes> {
                         spacing: 5,
                         children: [
                           const Icon(Icons.work, size: 16),
-                          Text(widget.receita.dificuldade?.capitalize() ?? '-'),
+                          Text(widget.receita.dificuldade?.toLowerCase().capitalize() ?? '-'),
                         ],
                       ),
                     ],
