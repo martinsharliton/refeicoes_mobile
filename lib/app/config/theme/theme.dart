@@ -58,18 +58,14 @@ class Theme {
     elevatedButtonTheme: ElevatedButtonThemeData(style: AppStyles.instance.secondaryButton),
     textButtonTheme: TextButtonThemeData(style: AppStyles.instance.textButton),
     outlinedButtonTheme: OutlinedButtonThemeData(style: AppStyles.instance.primaryOutlinedButton),
-    inputDecorationTheme: InputDecorationTheme(
-      activeIndicatorBorder: BorderSide(color: Colors.grey[400]!),
-      fillColor: Colors.white,
-      filled: true,
-      isDense: true,
-      border: _defaultInputBorder,
-      enabledBorder: _defaultInputBorder,
-      focusedBorder: _defaultInputBorder,
-      errorBorder: _defaultInputBorder.copyWith(borderSide: BorderSide(color: Colors.red.shade700)),
-      focusedErrorBorder: _defaultInputBorder.copyWith(borderSide: BorderSide(color: Colors.red.shade700)),
-      labelStyle: textStyles.textRegular.copyWith(color: Colors.grey),
-      errorStyle: textStyles.textRegular.copyWith(color: Colors.red.shade700),
+    inputDecorationTheme: _defaultInputDecorationTheme,
+    dropdownMenuTheme: DropdownMenuThemeData(
+      inputDecorationTheme: _defaultInputDecorationTheme,
+      textStyle: textStyles.textRegular.copyWith(color: Colors.grey),
+      menuStyle: MenuStyle(
+        backgroundColor: WidgetStateProperty.all<Color>(Colors.white),
+        shape: WidgetStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(25))),
+      ),
     ),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: colors.secondary,
@@ -78,8 +74,22 @@ class Theme {
     dividerTheme: DividerThemeData(thickness: .8),
   );
 
-  static final _defaultInputBorder = OutlineInputBorder(
+  static final _defaultOutlineInputBorder = OutlineInputBorder(
     borderRadius: BorderRadius.circular(8),
     borderSide: BorderSide(color: Colors.grey[400]!),
+  );
+
+  static final _defaultInputDecorationTheme = InputDecorationTheme(
+    activeIndicatorBorder: BorderSide(color: Colors.grey[400]!),
+    fillColor: Colors.white,
+    filled: true,
+    isDense: true,
+    border: _defaultOutlineInputBorder,
+    enabledBorder: _defaultOutlineInputBorder,
+    focusedBorder: _defaultOutlineInputBorder,
+    errorBorder: _defaultOutlineInputBorder.copyWith(borderSide: BorderSide(color: Colors.red.shade700)),
+    focusedErrorBorder: _defaultOutlineInputBorder.copyWith(borderSide: BorderSide(color: Colors.red.shade700)),
+    labelStyle: textStyles.textRegular.copyWith(color: Colors.grey),
+    errorStyle: textStyles.textRegular.copyWith(color: Colors.red.shade700),
   );
 }

@@ -4,18 +4,8 @@ class ReceitaModel {
   String? imagemUrl;
   int? tempoPreparo;
   String? dificuldade;
-  List<String>? ingredientes;
-  List<String>? passos;
 
-  ReceitaModel({
-    this.titulo,
-    this.descricao,
-    this.imagemUrl,
-    this.tempoPreparo,
-    this.dificuldade,
-    this.ingredientes,
-    this.passos,
-  });
+  ReceitaModel({this.titulo, this.descricao, this.imagemUrl, this.tempoPreparo, this.dificuldade});
 
   ReceitaModel.fromJson(Map<String, dynamic> json) {
     titulo = json['titulo'];
@@ -23,8 +13,6 @@ class ReceitaModel {
     imagemUrl = json['imagemUrl'];
     tempoPreparo = json['tempoPreparo'];
     dificuldade = json['dificuldade'];
-    ingredientes = json['ingredientes'].cast<String>();
-    passos = json['passos'].cast<String>();
   }
 
   Map<String, dynamic> toJson() {
@@ -34,8 +22,6 @@ class ReceitaModel {
     data['imagemUrl'] = imagemUrl;
     data['tempoPreparo'] = tempoPreparo;
     data['dificuldade'] = dificuldade;
-    data['ingredientes'] = ingredientes;
-    data['passos'] = passos;
     return data;
   }
 }

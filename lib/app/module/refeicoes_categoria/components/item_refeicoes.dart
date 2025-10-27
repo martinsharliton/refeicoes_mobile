@@ -4,25 +4,31 @@ import 'package:flutter_modular/flutter_modular.dart';
 import '../../../app_module.dart';
 import '../../../config/exetension/extension.dart';
 import '../../../models/receita/receita_response_dto.dart';
-import '../../receitas_refeicoes/receitas_refeicoes_page.dart';
+import '../refeicoes_categoria_controller.dart';
+import 'opcoes_refeicao_bootom_sheet.dart';
 
 class ItemRefeicoes extends StatefulWidget {
+  final RefeicoesCategoriaController controller;
   final ReceitaResponseDTO receita;
 
-  const ItemRefeicoes({super.key, required this.receita});
+  const ItemRefeicoes({super.key, required this.receita, required this.controller});
 
   @override
   State<ItemRefeicoes> createState() => _ItemRefeicoesState();
 }
 
 class _ItemRefeicoesState extends State<ItemRefeicoes> {
+  RefeicoesCategoriaController get controller => widget.controller;
   ReceitaResponseDTO get receita => widget.receita;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        selecionarRefeicao();
+        abrirTelaReceitaRefeicao();
+      },
+      onDoubleTap: () {
+        abrirOpcoesRefeicaoBootomSheet();
       },
       child: Container(
         decoration: BoxDecoration(
@@ -33,6 +39,7 @@ class _ItemRefeicoesState extends State<ItemRefeicoes> {
         margin: const EdgeInsets.symmetric(vertical: 8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ClipRRect(
               borderRadius: const BorderRadius.vertical(top: Radius.circular(10)),
@@ -103,17 +110,16 @@ class _ItemRefeicoesState extends State<ItemRefeicoes> {
     );
   }
 
-  void selecionarRefeicao() {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (_) {
-          return ReceitasRefeicoesPage(receita: receita);
-        },
-      ),
-    );
-  }
-
   Future<void> abrirTelaReceitaRefeicao() async {
     await Modular.to.pushNamed(routeReceitaRefeicao, arguments: receita);
+  }
+
+  void abrirOpcoesRefeicaoBootomSheet() async {
+    return showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return OpcoesRefeicaoBootomSheet(receita: receita, controller: controller);
+      },
+    );
   }
 }

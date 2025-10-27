@@ -39,7 +39,6 @@ final List<Imagens> listaDeImagens = [
   Imagens('https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=849&h=477&crop=0'),
   Imagens('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=849&h=477&crop=0'),
 
-  // --- Novas Imagens Adicionadas ---
   Imagens('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=849&h=477&crop=0'),
   Imagens('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=849&h=477&crop=0'),
   Imagens('https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=849&h=477&crop=0'),

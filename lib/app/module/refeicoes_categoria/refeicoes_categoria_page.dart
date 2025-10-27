@@ -7,6 +7,7 @@ import '../../core/loader.dart';
 import '../../core/messages.dart';
 import '../../core/page_status.dart';
 import '../../models/categoria/categoria_response_dto.dart';
+import 'components/adicionar_refeicao_categoria_dialog.dart';
 import 'components/item_refeicoes.dart';
 import 'refeicoes_categoria_controller.dart';
 
@@ -99,13 +100,18 @@ class _RefeicoesCategoriaPageState extends State<RefeicoesCategoriaPage> with Lo
                   textAlign: TextAlign.justify,
                 ),
                 Flexible(
-                  child: ListView.builder(
-                    padding: EdgeInsets.only(bottom: 100),
-                    itemCount: controller.listReceitas.length,
-                    itemBuilder: (context, index) {
-                      final receita = controller.listReceitas[index];
-                      return ItemRefeicoes(receita: receita);
+                  child: RefreshIndicator(
+                    onRefresh: () async {
+                      await controller.carregarReceitas();
                     },
+                    child: ListView.builder(
+                      padding: EdgeInsets.only(bottom: 100),
+                      itemCount: controller.listReceitas.length,
+                      itemBuilder: (context, index) {
+                        final receita = controller.listReceitas[index];
+                        return ItemRefeicoes(receita: receita, controller: controller);
+                      },
+                    ),
                   ),
                 ),
               ],
@@ -116,13 +122,13 @@ class _RefeicoesCategoriaPageState extends State<RefeicoesCategoriaPage> with Lo
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {
-          // showDialog(
-          //   barrierDismissible: false,
-          //   context: context,
-          //   builder: (context) {
-          //     return Container();
-          //   },
-          // );
+          showDialog(
+            barrierDismissible: false,
+            context: context,
+            builder: (context) {
+              return AdicionarRefeicaoCategoriaDialog(controller: controller);
+            },
+          );
         },
       ),
     );

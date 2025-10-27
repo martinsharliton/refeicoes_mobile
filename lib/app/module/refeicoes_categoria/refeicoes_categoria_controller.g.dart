@@ -90,6 +90,66 @@ mixin _$RefeicoesCategoriaController
     });
   }
 
+  late final _$_imagemSelecionadaAtom = Atom(
+    name: 'RefeicoesCategoriaControllerBase._imagemSelecionada',
+    context: context,
+  );
+
+  String? get imagemSelecionada {
+    _$_imagemSelecionadaAtom.reportRead();
+    return super._imagemSelecionada;
+  }
+
+  @override
+  String? get _imagemSelecionada => imagemSelecionada;
+
+  @override
+  set _imagemSelecionada(String? value) {
+    _$_imagemSelecionadaAtom.reportWrite(value, super._imagemSelecionada, () {
+      super._imagemSelecionada = value;
+    });
+  }
+
+  late final _$_difuculdadeAtom = Atom(
+    name: 'RefeicoesCategoriaControllerBase._difuculdade',
+    context: context,
+  );
+
+  String get difuculdade {
+    _$_difuculdadeAtom.reportRead();
+    return super._difuculdade;
+  }
+
+  @override
+  String get _difuculdade => difuculdade;
+
+  @override
+  set _difuculdade(String value) {
+    _$_difuculdadeAtom.reportWrite(value, super._difuculdade, () {
+      super._difuculdade = value;
+    });
+  }
+
+  late final _$_imagemErrorAtom = Atom(
+    name: 'RefeicoesCategoriaControllerBase._imagemError',
+    context: context,
+  );
+
+  bool get imagemError {
+    _$_imagemErrorAtom.reportRead();
+    return super._imagemError;
+  }
+
+  @override
+  bool get _imagemError => imagemError;
+
+  @override
+  set _imagemError(bool value) {
+    _$_imagemErrorAtom.reportWrite(value, super._imagemError, () {
+      super._imagemError = value;
+    });
+  }
+
   late final _$criarNovaReceitaAsyncAction = AsyncAction(
     'RefeicoesCategoriaControllerBase.criarNovaReceita',
     context: context,
@@ -110,6 +170,38 @@ mixin _$RefeicoesCategoriaController
   @override
   Future<void> carregarReceitas() {
     return _$carregarReceitasAsyncAction.run(() => super.carregarReceitas());
+  }
+
+  late final _$RefeicoesCategoriaControllerBaseActionController =
+      ActionController(
+        name: 'RefeicoesCategoriaControllerBase',
+        context: context,
+      );
+
+  @override
+  void setImage(String? image) {
+    final _$actionInfo = _$RefeicoesCategoriaControllerBaseActionController
+        .startAction(name: 'RefeicoesCategoriaControllerBase.setImage');
+    try {
+      return super.setImage(image);
+    } finally {
+      _$RefeicoesCategoriaControllerBaseActionController.endAction(
+        _$actionInfo,
+      );
+    }
+  }
+
+  @override
+  void setImageError(bool value) {
+    final _$actionInfo = _$RefeicoesCategoriaControllerBaseActionController
+        .startAction(name: 'RefeicoesCategoriaControllerBase.setImageError');
+    try {
+      return super.setImageError(value);
+    } finally {
+      _$RefeicoesCategoriaControllerBaseActionController.endAction(
+        _$actionInfo,
+      );
+    }
   }
 
   @override

@@ -2,6 +2,7 @@ import 'package:mobx/mobx.dart';
 
 import '../../core/api_handler.dart';
 import '../../core/page_status.dart';
+import '../../enumeration/dificuldade.dart';
 import '../../models/receita/receita_model.dart';
 import '../../models/receita/receita_response_dto.dart';
 import '../../repository/refeicao_categoria/refeicao_categoria_repository.dart';
@@ -27,6 +28,15 @@ abstract class RefeicoesCategoriaControllerBase with Store {
   @readonly
   String? _errorMessage;
 
+  @readonly
+  String? _imagemSelecionada;
+
+  @readonly
+  String _difuculdade = Dificuldade.facil.descricao;
+
+  @readonly
+  bool _imagemError = false;
+
   RefeicoesCategoriaControllerBase(this.receitaRepository);
 
   @action
@@ -35,7 +45,7 @@ abstract class RefeicoesCategoriaControllerBase with Store {
     _successMessage = null;
 
     await handleApiCall(
-      receitaRepository.createReceita(idCategoria: 0, receita: receita),
+      receitaRepository.createReceita(idCategoria: idCategoria ?? 0, receita: receita),
       onSuccess: (result) async {
         _listReceitas.add(result);
         _status = PageStatus.loaded;
@@ -55,6 +65,7 @@ abstract class RefeicoesCategoriaControllerBase with Store {
     await handleApiCall(
       receitaRepository.findAll(idCategoria: idCategoria ?? 0),
       onSuccess: (result) async {
+        _listReceitas.clear();
         _listReceitas.addAll(result);
         _status = PageStatus.loaded;
       },
@@ -63,5 +74,15 @@ abstract class RefeicoesCategoriaControllerBase with Store {
         _status = PageStatus.error;
       },
     );
+  }
+
+  @action
+  void setImage(String? image) {
+    _imagemSelecionada = image;
+  }
+
+  @action
+  void setImageError(bool value) {
+    _imagemError = value;
   }
 }
