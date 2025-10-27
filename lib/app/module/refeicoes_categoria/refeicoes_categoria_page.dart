@@ -80,7 +80,7 @@ class _RefeicoesCategoriaPageState extends State<RefeicoesCategoriaPage> with Lo
         padding: const EdgeInsets.all(10.0),
         child: Observer(
           builder: (context) {
-            if (controller.listReceitas.isEmpty) {
+            if (controller.listReceitas.isEmpty && controller.status == PageStatus.loaded) {
               return Center(
                 child: Text(
                   textAlign: TextAlign.center,

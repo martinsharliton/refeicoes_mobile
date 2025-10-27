@@ -61,4 +61,36 @@ class RefeicaoCategoriaRepositoryImpl implements RefeicaoCategoriaRepository {
       return Error(DioFailure(message: 'Erro ao carregar receitas'));
     }
   }
+
+  @override
+  Future<Result<List<String>, Failure>> findAllIngredientes({required int idRefeicao}) async {
+    try {
+      final response = await client.get('receitas/$idRefeicao/ingredientes');
+
+      if (response.statusCode == 200) {
+        final result = List<String>.from(response.data);
+        return Success(result);
+      }
+
+      return Error(DioFailure(message: response.data['message'] as String));
+    } on DioException catch (_) {
+      return Error(DioFailure(message: 'Erro ao carregar receitas'));
+    }
+  }
+
+  @override
+  Future<Result<List<String>, Failure>> findAllPassos({required int idRefeicao}) async {
+    try {
+      final response = await client.get('receitas/$idRefeicao/passos');
+
+      if (response.statusCode == 200) {
+        final result = List<String>.from(response.data);
+        return Success(result);
+      }
+
+      return Error(DioFailure(message: response.data['message'] as String));
+    } on DioException catch (_) {
+      return Error(DioFailure(message: 'Erro ao carregar receitas'));
+    }
+  }
 }

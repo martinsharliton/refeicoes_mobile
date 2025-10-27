@@ -172,6 +172,16 @@ mixin _$RefeicoesCategoriaController
     return _$carregarReceitasAsyncAction.run(() => super.carregarReceitas());
   }
 
+  late final _$removerRefeicaoAsyncAction = AsyncAction(
+    'RefeicoesCategoriaControllerBase.removerRefeicao',
+    context: context,
+  );
+
+  @override
+  Future<void> removerRefeicao() {
+    return _$removerRefeicaoAsyncAction.run(() => super.removerRefeicao());
+  }
+
   late final _$RefeicoesCategoriaControllerBaseActionController =
       ActionController(
         name: 'RefeicoesCategoriaControllerBase',
