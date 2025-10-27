@@ -82,7 +82,8 @@ class _RefeicoesCategoriaPageState extends State<RefeicoesCategoriaPage> with Lo
             if (controller.listReceitas.isEmpty) {
               return Center(
                 child: Text(
-                  'Nenhuma receita disponível para a categoria ${categoria.titulo ?? ''}',
+                  textAlign: TextAlign.center,
+                  'Nenhuma receita disponível para a categoria\n${categoria.titulo ?? ''}',
                   style: TextStyle(fontSize: 16, color: Colors.black),
                 ),
               );
@@ -99,6 +100,7 @@ class _RefeicoesCategoriaPageState extends State<RefeicoesCategoriaPage> with Lo
                 ),
                 Flexible(
                   child: ListView.builder(
+                    padding: EdgeInsets.only(bottom: 100),
                     itemCount: controller.listReceitas.length,
                     itemBuilder: (context, index) {
                       final receita = controller.listReceitas[index];
@@ -114,13 +116,13 @@ class _RefeicoesCategoriaPageState extends State<RefeicoesCategoriaPage> with Lo
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {
-          showDialog(
-            barrierDismissible: false,
-            context: context,
-            builder: (context) {
-              return Container();
-            },
-          );
+          // showDialog(
+          //   barrierDismissible: false,
+          //   context: context,
+          //   builder: (context) {
+          //     return Container();
+          //   },
+          // );
         },
       ),
     );

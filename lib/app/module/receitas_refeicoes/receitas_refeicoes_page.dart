@@ -13,6 +13,7 @@ class ReceitasRefeicoesPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(receita.titulo ?? '-')),
       body: ListView(
+        padding: EdgeInsets.only(bottom: 100),
         children: [
           Stack(
             children: [
@@ -42,27 +43,27 @@ class ReceitasRefeicoesPage extends StatelessWidget {
           ),
           Builder(
             builder: (context) {
-              if (receita.ingredientes?.isEmpty ?? true) {
-                return const Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Text('Nenhum ingrediente disponível para esta receita.', style: TextStyle(fontSize: 16)),
+              if ((receita.ingredientes?.isEmpty ?? true) && (receita.passos?.isEmpty ?? true)) {
+                return Center(
+                  child: const Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Text('Nenhum item disponível para esta receita.', style: TextStyle(fontSize: 16)),
+                  ),
                 );
               }
 
-              return ItemReceitaRefeicao(titulo: 'Ingredientes', itens: receita.ingredientes ?? []);
-            },
-          ),
-
-          Builder(
-            builder: (context) {
-              if (receita.passos?.isEmpty ?? true) {
-                return const Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Text('Nenhum passo disponível para esta receita.', style: TextStyle(fontSize: 16)),
-                );
-              }
-
-              return ItemReceitaRefeicao(titulo: 'Passos', itens: receita.passos ?? []);
+              return Column(
+                children: [
+                  Visibility(
+                    visible: receita.ingredientes?.isNotEmpty ?? false,
+                    child: ItemReceitaRefeicao(titulo: 'Ingredientes', itens: receita.ingredientes ?? []),
+                  ),
+                  Visibility(
+                    visible: receita.passos?.isNotEmpty ?? false,
+                    child: ItemReceitaRefeicao(titulo: 'Passos', itens: receita.passos ?? []),
+                  ),
+                ],
+              );
             },
           ),
         ],

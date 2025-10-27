@@ -3,6 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'module/categoria/categoria_module.dart';
 import 'module/core/core_module.dart';
 import 'module/inicializar_app/inicializar_app_module.dart';
+import 'module/receitas_refeicoes/receitas_refeicoes_module.dart';
 import 'module/refeicoes_categoria/refeicoes_categoria_module.dart';
 
 class AppModule extends Module {
@@ -14,8 +15,10 @@ class AppModule extends Module {
     r.module(Modular.initialRoute, module: InicializarAppModule());
     r.module(routeCategoria, module: CategoriaModule());
     r.module(routeRefeicaoCategoria, module: RefeicoesCategoriaModule());
+    r.module(routeReceitaRefeicao, module: ReceitasRefeicoesModule());
   }
 }
 
 const routeCategoria = '/categoria/';
-const routeRefeicaoCategoria = '/refeicao-ategoria/';
+const routeRefeicaoCategoria = '/refeicao-categoria/';
+const routeReceitaRefeicao = '/receita-refeicao/';

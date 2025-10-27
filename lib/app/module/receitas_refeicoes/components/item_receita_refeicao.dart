@@ -49,37 +49,68 @@ class ItemReceitaRefeicao extends StatelessWidget {
                   final item = entry.value;
                   final isLast = index == itens.length - 1;
 
-                  return Container(
-                    decoration: BoxDecoration(
-                      border: !isLast ? Border(bottom: BorderSide(color: Colors.grey.shade100, width: 1.5)) : null,
-                    ),
-                    child: Material(
-                      color: Colors.transparent,
-                      child: InkWell(
-                        onTap: () {},
-                        splashColor: cor.withValues(alpha: 0.1),
-                        highlightColor: cor.withValues(alpha: 0.05),
-                        child: ListTile(
-                          leading: CircleAvatar(
-                            backgroundColor: cor.withValues(alpha: 0.15),
-                            child: Text(
-                              '${index + 1}',
-                              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: cor),
+                  return Row(
+                    children: [
+                      Flexible(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            border: !isLast
+                                ? Border(bottom: BorderSide(color: Colors.grey.shade100, width: 1.5))
+                                : null,
+                          ),
+                          child: Material(
+                            color: Colors.transparent,
+                            child: ListTile(
+                              splashColor: cor.withValues(alpha: 0.1),
+                              leading: CircleAvatar(
+                                backgroundColor: cor.withValues(alpha: 0.15),
+                                child: Text(
+                                  '${index + 1}',
+                                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: cor),
+                                ),
+                              ),
+                              title: Text(
+                                item,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                  height: 1.4,
+                                  color: Colors.black87,
+                                ),
+                              ),
                             ),
                           ),
-                          title: Text(
-                            item,
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              height: 1.4,
-                              color: Colors.black87,
-                            ),
-                          ),
-                          trailing: Icon(Icons.chevron_right_rounded, color: Colors.grey.shade400, size: 20),
                         ),
                       ),
-                    ),
+
+                      Visibility(
+                        visible: isLast,
+                        child: GestureDetector(
+                          onTap: () {},
+                          child: Container(
+                            margin: EdgeInsets.all(5),
+                            padding: EdgeInsets.all(12),
+                            decoration: BoxDecoration(
+                              color: context.colors.secondary,
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                            child: Icon(Icons.add, color: Colors.white),
+                          ),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                          margin: EdgeInsets.all(5),
+                          padding: EdgeInsets.all(12),
+                          decoration: BoxDecoration(
+                            color: context.colors.secondary,
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                          child: Icon(Icons.remove, color: Colors.white),
+                        ),
+                      ),
+                    ],
                   );
                 }).toList(),
               ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../../app_module.dart';
 import '../../../config/exetension/extension.dart';
 import '../../../models/receita/receita_response_dto.dart';
 import '../../receitas_refeicoes/receitas_refeicoes_page.dart';
@@ -109,5 +111,9 @@ class _ItemRefeicoesState extends State<ItemRefeicoes> {
         },
       ),
     );
+  }
+
+  Future<void> abrirTelaReceitaRefeicao() async {
+    await Modular.to.pushNamed(routeReceitaRefeicao, arguments: receita);
   }
 }
