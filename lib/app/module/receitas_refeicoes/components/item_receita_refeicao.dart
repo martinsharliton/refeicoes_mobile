@@ -1,133 +1,160 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
-import '../../../config/theme/ui/colors_app.dart';
 import '../../../config/theme/ui/text_styles.dart';
+import '../receitas_refeicoes_controller.dart';
+import 'adicionar_item_dialog.dart';
+import 'remover_item_dialog.dart';
 
 class ItemReceitaRefeicao extends StatefulWidget {
+  final ReceitasRefeicoesController controller;
   final List<String> itens;
   final String titulo;
-
-  const ItemReceitaRefeicao({super.key, required this.itens, required this.titulo});
+  const ItemReceitaRefeicao({super.key, required this.itens, required this.titulo, required this.controller});
 
   @override
   State<ItemReceitaRefeicao> createState() => _ItemReceitaRefeicaoState();
 }
 
 class _ItemReceitaRefeicaoState extends State<ItemReceitaRefeicao> {
-  Color get cor => context.colors.primary;
+  ReceitasRefeicoesController get controller => widget.controller;
+  String get titulo => widget.titulo;
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+    final Color sectionColor = colorScheme.primary;
+
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12.0),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
       child: Column(
-        spacing: 10,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             width: double.infinity,
             decoration: BoxDecoration(
-              color: cor.withValues(alpha: 0.2),
+              color: sectionColor.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(15),
-              border: Border.all(color: cor.withValues(alpha: 0.5), width: 1),
+              border: Border.all(color: sectionColor.withValues(alpha: 0.3), width: 1),
             ),
             child: Row(
               children: [
-                Flexible(
+                Expanded(
                   child: ListTile(
                     dense: true,
                     visualDensity: VisualDensity.compact,
-                    leading: Icon(Icons.restaurant_menu_rounded, color: cor, size: 20),
+                    leading: Icon(
+                      titulo == 'Ingredientes' ? Icons.kitchen_outlined : Icons.format_list_numbered_rounded,
+                      color: sectionColor,
+                      size: 24,
+                    ),
                     title: Text(
-                      widget.titulo,
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: cor, height: 1.2),
+                      titulo,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: textTheme.titleMedium?.copyWith(color: sectionColor, fontWeight: FontWeight.bold),
                     ),
                     subtitle: Text(
                       '${widget.itens.length} ${widget.itens.length == 1 ? 'item' : 'itens'}',
-                      style: TextStyle(fontSize: 13, color: cor.withValues(alpha: 0.7), fontWeight: FontWeight.w500),
+                      style: textTheme.titleMedium?.copyWith(color: sectionColor.withValues(alpha: 0.7)),
                     ),
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    margin: EdgeInsets.all(5),
-                    padding: EdgeInsets.all(12),
-                    decoration: BoxDecoration(color: context.colors.secondary, borderRadius: BorderRadius.circular(50)),
-                    child: Icon(Icons.add, color: Colors.white),
+                // Botão Adicionar (+)
+                Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: IconButton(
+                    style: IconButton.styleFrom(
+                      backgroundColor: colorScheme.primary,
+                      foregroundColor: colorScheme.onSecondary,
+                    ),
+                    icon: const Icon(Icons.add),
+                    onPressed: () {
+                      abrirAdicionarItemDialog(titulo: titulo);
+                    },
+                    tooltip: 'Adicionar ${titulo.toLowerCase()}',
                   ),
                 ),
               ],
             ),
           ),
+          const SizedBox(height: 8),
           Container(
-            decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(8)),
+            decoration: BoxDecoration(
+              color: colorScheme.surface,
+              borderRadius: BorderRadius.circular(12),
+              boxShadow: [
+                BoxShadow(color: Colors.black.withValues(alpha: 0.05), blurRadius: 4, offset: const Offset(0, 2)),
+              ],
+            ),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(12),
               child: Column(
                 children: widget.itens.asMap().entries.map((entry) {
                   final index = entry.key;
                   final item = entry.value;
                   final isLast = index == widget.itens.length - 1;
 
-                  return Row(
-                    children: [
-                      Flexible(
-                        child: Dismissible(
-                          confirmDismiss: (direction) async {
-                            return null;
-                          },
-                          direction: DismissDirection.endToStart,
-                          background: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              color: Colors.red.shade700,
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.only(right: 12),
-                              child: Row(
-                                spacing: 10,
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Text(
-                                    'Remover',
-                                    style: context.textStyles.textTitleItemList.copyWith(color: Colors.white),
-                                  ),
-                                  Icon(Icons.delete, color: Colors.white),
-                                ],
-                              ),
-                            ),
-                          ),
-                          key: Key(item),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              border: !isLast
-                                  ? Border(bottom: BorderSide(color: Colors.grey.shade100, width: 1.5))
-                                  : null,
-                            ),
-                            child: ListTile(
-                              splashColor: cor.withValues(alpha: 0.1),
-                              leading: CircleAvatar(
-                                backgroundColor: cor.withValues(alpha: 0.15),
-                                child: Text(
-                                  '${index + 1}',
-                                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: cor),
-                                ),
-                              ),
-                              title: Text(
-                                item,
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                  height: 1.4,
-                                  color: Colors.black87,
-                                ),
-                              ),
-                            ),
+                  return Dismissible(
+                    key: Key('${titulo}_${item}_$index'),
+                    direction: DismissDirection.endToStart,
+                    confirmDismiss: (direction) async {
+                      controller.item = item;
+
+                      final bool? confirmar = await _abrirRemoverItemDialog(item: controller.item ?? item);
+
+                      if (confirmar != null && confirmar == true) {
+                        if (titulo == 'Ingredientes') {
+                          await deleteIngrediente();
+                        } else {
+                          await deletePasso();
+                        }
+
+                        return confirmar;
+                      }
+
+                      return false;
+                    },
+                    background: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.red.shade800,
+                        borderRadius: index == 0 && isLast
+                            ? BorderRadius.circular(12)
+                            : index == 0
+                            ? const BorderRadius.only(topLeft: Radius.circular(12), topRight: Radius.circular(12))
+                            : isLast
+                            ? const BorderRadius.only(bottomLeft: Radius.circular(12), bottomRight: Radius.circular(12))
+                            : BorderRadius.zero,
+                      ),
+                      padding: const EdgeInsets.only(right: 20),
+                      alignment: Alignment.centerRight,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text('Remover', style: context.textStyles.textTitleItemList.copyWith(color: Colors.white)),
+                          const SizedBox(width: 8),
+                          Icon(Icons.delete_outline, color: Colors.white, size: 22),
+                        ],
+                      ),
+                    ),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: !isLast ? Border(bottom: BorderSide(color: Colors.grey.shade200, width: 1)) : null,
+                      ),
+                      child: ListTile(
+                        leading: CircleAvatar(
+                          backgroundColor: sectionColor.withValues(alpha: 0.1),
+                          radius: 18,
+                          child: Text(
+                            '${index + 1}',
+                            style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500, fontSize: 16),
                           ),
                         ),
+                        title: Text(item, style: textTheme.bodyMedium?.copyWith(color: colorScheme.onSurface)),
                       ),
-                    ],
+                    ),
                   );
                 }).toList(),
               ),
@@ -136,5 +163,51 @@ class _ItemReceitaRefeicaoState extends State<ItemReceitaRefeicao> {
         ],
       ),
     );
+  }
+
+  // Abre o dialog de confirmação para remover item
+  Future<bool?> _abrirRemoverItemDialog({required String item}) async {
+    return await showDialog<bool>(
+      context: context,
+      builder: (context) {
+        return RemoverItemDialog(item: item, titulo: titulo);
+      },
+    );
+  }
+
+  // Abre o dialog para adicionar um novo item (VOCÊ PRECISA CRIAR ESTE WIDGET)
+  Future<void> abrirAdicionarItemDialog({required String titulo}) async {
+    log('Criar $titulo');
+
+    final result = await showDialog<Object>(
+      barrierDismissible: false,
+      context: context,
+      builder: (context) {
+        return AdicionarItemDialog();
+      },
+    );
+
+    if ((result != null) && (result is String) && (result).isNotEmpty) {
+      controller.item = result.toString();
+      log('Criar ${result.toString()}');
+
+      if (titulo == 'Ingredientes') {
+        controller.adicionarIngrediente();
+      } else {
+        controller.adicionarPasso();
+      }
+
+      return;
+    }
+
+    log('Deu erro em algo');
+  }
+
+  Future<void> deleteIngrediente() async {
+    controller.deletarIngredientesReceitas();
+  }
+
+  Future<void> deletePasso() async {
+    controller.deletarPassosReceitas();
   }
 }

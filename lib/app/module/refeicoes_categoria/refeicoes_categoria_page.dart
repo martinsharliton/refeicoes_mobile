@@ -119,8 +119,9 @@ class _RefeicoesCategoriaPageState extends State<RefeicoesCategoriaPage> with Lo
           },
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
+      floatingActionButton: FloatingActionButton.extended(
+        label: Text('Nova Refeição'),
+        icon: const Icon(Icons.add),
         onPressed: () {
           showDialog(
             barrierDismissible: false,

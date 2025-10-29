@@ -11,4 +11,10 @@ abstract class RefeicaoCategoriaRepository {
 
   Future<Result<List<String>, Failure>> findAllIngredientes({required int idRefeicao});
   Future<Result<List<String>, Failure>> findAllPassos({required int idRefeicao});
+
+  Future<Result<List<String>, Failure>> createIngredientesReceita({required int idRefeicao, required String item});
+  Future<Result<List<String>, Failure>> createPassosReceita({required int idRefeicao, required String item});
+
+  Future<Result<List<String>, Failure>> deleteIngredientesReceita({required int idRefeicao, required String item});
+  Future<Result<List<String>, Failure>> deletePassosReceita({required int idRefeicao, required String item});
 }

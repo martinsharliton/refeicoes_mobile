@@ -98,8 +98,9 @@ class _CategoriaPageState extends State<CategoriaPage> with Loader, Messages {
           );
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
+      floatingActionButton: FloatingActionButton.extended(
+        label: Text('Nova Categoria'),
+        icon: const Icon(Icons.add),
         onPressed: () {
           showDialog(
             barrierDismissible: false,

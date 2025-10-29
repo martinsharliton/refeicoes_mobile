@@ -13,6 +13,8 @@ abstract class ReceitasRefeicoesControllerBase with Store {
 
   int? idRefeicao;
 
+  String? item;
+
   @readonly
   var _listIngredientes = ObservableList<String>();
 
@@ -71,10 +73,90 @@ abstract class ReceitasRefeicoesControllerBase with Store {
   }
 
   @action
+  Future<void> deletarPassosReceitas() async {
+    _errorMessage = null;
+    _successMessage = null;
+    _status = PageStatus.loading;
+
+    await handleApiCall(
+      receitaRepository.deletePassosReceita(idRefeicao: idRefeicao ?? 0, item: item ?? '-'),
+      onSuccess: (result) async {
+        _listPassos.clear();
+        _listPassos.addAll(result);
+        _status = PageStatus.loaded;
+      },
+      onError: (message) {
+        _errorMessage = message;
+        _status = PageStatus.error;
+      },
+    );
+  }
+
+  @action
+  Future<void> deletarIngredientesReceitas() async {
+    _errorMessage = null;
+    _successMessage = null;
+    _status = PageStatus.loading;
+
+    await handleApiCall(
+      receitaRepository.deleteIngredientesReceita(idRefeicao: idRefeicao ?? 0, item: item ?? '-'),
+      onSuccess: (result) async {
+        _listIngredientes.clear();
+        _listIngredientes.addAll(result);
+        _status = PageStatus.loaded;
+      },
+      onError: (message) {
+        _errorMessage = message;
+        _status = PageStatus.error;
+      },
+    );
+  }
+
+  @action
+  Future<void> adicionarIngrediente() async {
+    _errorMessage = null;
+    _successMessage = null;
+    _status = PageStatus.loading;
+
+    await handleApiCall(
+      receitaRepository.createIngredientesReceita(idRefeicao: idRefeicao ?? 0, item: item ?? '-'),
+      onSuccess: (result) async {
+        _listIngredientes.clear();
+        _listIngredientes.addAll(result);
+        _status = PageStatus.loaded;
+      },
+      onError: (message) {
+        _errorMessage = message;
+        _status = PageStatus.error;
+      },
+    );
+  }
+
+  @action
+  Future<void> adicionarPasso() async {
+    _errorMessage = null;
+    _successMessage = null;
+    _status = PageStatus.loading;
+
+    await handleApiCall(
+      receitaRepository.createPassosReceita(idRefeicao: idRefeicao ?? 0, item: item ?? '-'),
+      onSuccess: (result) async {
+        _listPassos.clear();
+        _listPassos.addAll(result);
+        _status = PageStatus.loaded;
+      },
+      onError: (message) {
+        _errorMessage = message;
+        _status = PageStatus.error;
+      },
+    );
+  }
+
+  @action
   Future<void> carregarTodosOsDados() async {
     await Future.wait([carregarIngredientesReceitas(), carregarPassosReceitas()]);
   }
 
   @computed
-  bool get todasAsListas => _listIngredientes.isEmpty && _listPassos.isEmpty;
+  bool get todasAsListasEstaoVazias => _listIngredientes.isEmpty && _listPassos.isEmpty;
 }

@@ -22,19 +22,17 @@ class ReceitasRefeicoesPage extends StatefulWidget {
 class _ReceitasRefeicoesPageState extends State<ReceitasRefeicoesPage> with Loader, Messages {
   final controller = Modular.get<ReceitasRefeicoesController>();
   ReceitaResponseDTO get receita => widget.receita;
-
-  List<ReactionDisposer> _disposers = [];
+  final List<ReactionDisposer> _disposers = [];
 
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((_) => _setupReactions());
     super.initState();
+    controller.idRefeicao = receita.id;
+    WidgetsBinding.instance.addPostFrameCallback((_) => _setupReactions());
   }
 
-  Future<void> _setupReactions() async {
-    controller.idRefeicao = receita.id;
-
-    _disposers = [
+  void _setupReactions() {
+    _disposers.addAll([
       reaction((_) => controller.status, (status) {
         switch (status) {
           case PageStatus.initial:
@@ -47,87 +45,108 @@ class _ReceitasRefeicoesPageState extends State<ReceitasRefeicoesPage> with Load
             break;
           case PageStatus.success:
             hideLoader();
-            showSuccess(controller.successMessage ?? '', fixed: true);
+            showSuccess(controller.successMessage ?? 'Sucesso!', fixed: true);
             break;
           case PageStatus.error:
             hideLoader();
-            showError(controller.errorMessage ?? '', fixed: true);
+            showError(controller.errorMessage ?? 'Erro!', fixed: true);
             break;
         }
       }),
-      when((_) => controller.todasAsListas, () async {
+      when((_) => controller.todasAsListasEstaoVazias, () async {
         await controller.carregarTodosOsDados();
       }),
-    ];
+    ]);
   }
 
   @override
   void dispose() {
-    _disposeReactions();
-    super.dispose();
-  }
-
-  void _disposeReactions() {
     for (var dispose in _disposers) {
       dispose();
     }
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return Scaffold(
-      appBar: AppBar(title: Text(receita.titulo ?? '-')),
+      appBar: AppBar(title: Text(receita.titulo ?? 'Detalhes')),
       body: ListView(
         children: [
           Stack(
+            alignment: Alignment.bottomRight,
             children: [
-              Center(
-                child: Image.network(
-                  width: 849,
-                  height: 300,
-                  receita.imagemUrl ?? '-',
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    return const Icon(Icons.image_not_supported, size: 100);
-                  },
-                ),
+              Image.network(
+                receita.imagemUrl ?? '',
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height / 4,
+                fit: BoxFit.cover,
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) return child;
+                  return Container(
+                    height: 300,
+                    color: Colors.grey[300],
+                    child: Center(
+                      child: CircularProgressIndicator(
+                        value: loadingProgress.expectedTotalBytes != null
+                            ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
+                            : null,
+                      ),
+                    ),
+                  );
+                },
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    height: 300,
+                    color: Colors.grey[300],
+                    child: const Center(child: Icon(Icons.broken_image_outlined, size: 100, color: Colors.grey)),
+                  );
+                },
               ),
               Container(
                 width: double.infinity,
-                color: Colors.black45,
-                child: Padding(
-                  padding: const EdgeInsets.all(7),
-                  child: Text(
-                    receita.descricao ?? '-',
-                    style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
-                  ),
+                color: Colors.black.withValues(alpha: 0.6),
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                child: Text(
+                  receita.descricao ?? 'Sem descrição',
+                  style: textTheme.titleLarge?.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
                 ),
               ),
             ],
           ),
           Observer(
             builder: (context) {
-              if ((controller.listIngredientes.isEmpty) &&
-                  (controller.listPassos.isEmpty) &&
-                  controller.status == PageStatus.loaded) {
-                return Center(
-                  child: const Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Text('Nenhum item disponível para esta receita.', style: TextStyle(fontSize: 16)),
-                  ),
+              if (controller.todasAsListasEstaoVazias) {
+                return Row(
+                  children: [
+                    Expanded(
+                      child: ItemReceitaRefeicao(
+                        titulo: 'Ingredientes',
+                        controller: controller,
+                        itens: controller.listIngredientes,
+                      ),
+                    ),
+                    Expanded(
+                      child: ItemReceitaRefeicao(
+                        titulo: 'Passos',
+                        controller: controller,
+                        itens: controller.listPassos,
+                      ),
+                    ),
+                  ],
                 );
               }
 
               return Column(
                 children: [
-                  Visibility(
-                    visible: controller.listIngredientes.isNotEmpty,
-                    child: ItemReceitaRefeicao(titulo: 'Ingredientes', itens: controller.listIngredientes),
+                  ItemReceitaRefeicao(
+                    titulo: 'Ingredientes',
+                    controller: controller,
+                    itens: controller.listIngredientes,
                   ),
-                  Visibility(
-                    visible: controller.listPassos.isNotEmpty,
-                    child: ItemReceitaRefeicao(titulo: 'Passos', itens: controller.listPassos),
-                  ),
+                  ItemReceitaRefeicao(titulo: 'Passos', controller: controller, itens: controller.listPassos),
                 ],
               );
             },

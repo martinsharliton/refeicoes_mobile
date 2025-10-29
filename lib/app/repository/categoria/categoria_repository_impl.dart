@@ -23,7 +23,7 @@ class CategoriaRepositoryImpl implements CategoriaRepository {
         return Success(result);
       }
 
-      return Error(DioFailure(message: 'Erro ao carregar categorias'));
+      return Error(DioFailure(message: response.data['message'] as String));
     } on DioException catch (_) {
       return Error(DioFailure(message: 'Erro ao carregar categorias'));
     }
@@ -39,7 +39,7 @@ class CategoriaRepositoryImpl implements CategoriaRepository {
         return Success(result);
       }
 
-      return Error(DioFailure(message: 'Erro ao adicionar categoria'));
+      return Error(DioFailure(message: response.data['message'] as String));
     } on DioException catch (_) {
       return Error(DioFailure(message: 'Erro ao adicionar categoria'));
     }
@@ -54,7 +54,7 @@ class CategoriaRepositoryImpl implements CategoriaRepository {
         return Success(true);
       }
 
-      return Error(DioFailure(message: 'Erro ao remover categoria: $idCategoria'));
+      return Error(DioFailure(message: response.data['message'] as String));
     } on DioException catch (_) {
       return Error(DioFailure(message: 'Erro ao remover categoria: $idCategoria'));
     }
